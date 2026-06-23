@@ -69,7 +69,7 @@ function doPost(e) {
 
   // ---- Submit an Event ----
   if (action === 'submitEvent') {
-    var sheet = ss.getSheetByName('EventSubmissions');
+    var sheet = ss.getSheetByName('Events');
     sheet.appendRow([
       'pending',
       data.eventName || '',
@@ -79,7 +79,7 @@ function doPost(e) {
       data.date || '',
       data.time || '',
       data.description || '',
-      data.submitterEmail || '',
+      '',
       timestamp
     ]);
 

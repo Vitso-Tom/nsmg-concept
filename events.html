@@ -264,19 +264,19 @@ footer a { color: var(--gold); text-decoration: none; }
   <div class="submit-form" id="submitForm">
     <div>
       <label for="evName">Event Name</label>
-      <input type="text" id="evName" placeholder="e.g. Bare Bones at The Deck">
+      <input type="text" id="evName" placeholder="e.g. The Beatles Live at Gracie's!">
     </div>
     <div>
       <label for="evArtist">Band / Artist</label>
-      <input type="text" id="evArtist" placeholder="e.g. Bare Bones">
+      <input type="text" id="evArtist" placeholder="e.g. The Beatles">
     </div>
     <div>
       <label for="evVenue">Venue</label>
-      <input type="text" id="evVenue" placeholder="e.g. The Deck">
+      <input type="text" id="evVenue" placeholder="e.g. Gracie's">
     </div>
     <div>
       <label for="evAddress">Venue Address</label>
-      <input type="text" id="evAddress" placeholder="e.g. 179 Bridge St., Salisbury">
+      <input type="text" id="evAddress" placeholder="e.g. 123 Main St., Salem">
     </div>
     <div>
       <label for="evDate">Date</label>
@@ -308,18 +308,30 @@ footer a { color: var(--gold); text-decoration: none; }
 </footer>
 
 <script>
-const SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbypXM7EOrvTGENmmTLUNkY2zcHCwhUrGGTJrsascGD1Ryo5WmLGVQx50uAs-29jDsoj/exec';
+
+const FALLBACK_EVENTS = [
+  { eventName: 'Open Mic Night', venue: "Hugh O'Neill's", address: '45 Pleasant St., Malden', date: 'Every Wednesday', time: '8:30 PM', description: 'A talented network of local singer/songwriters and musicians performing short sets. Hosted by Jeff Munro. Sign-ups begin at 8:00 PM.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/1782071298911-BN52U4SQKVCSPBYFMBT2/unsplash-image-2UuhMZEChdc.jpg?format=750w' },
+  { eventName: 'Fred Ellsworth', venue: 'Berry Tavern', address: '2 High St., Danvers', date: 'Every Tuesday', time: '7:00 PM', description: 'A weekly staple at The Berry Tavern, adding to the already inviting atmosphere of regulars and friendly staff. Great menu with exceptional pizza. Reservations are a safe bet.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/503b0b66-a219-48ab-9fc5-4fea96a4e99f/fred.webp?format=750w' },
+  { eventName: 'Bare Bones', venue: 'The Deck', address: '179 Bridge St., Salisbury', date: 'Fri Jun 26', time: '6:00 PM', description: 'Another great night of high energy rock to keep you moving, whether you\'re burning off dinner from the restaurant downstairs or stopping in for a drink with an amazing view.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/62dfc18d-198e-4498-bd6e-3b6b8d2c7901/OIP.webp?format=750w' },
+  { eventName: 'Ordinary Madness', venue: 'Berry Tavern', address: '2 High St., Danvers', date: 'Wed Jul 23', time: 'TBA', description: 'Covers spanning five decades. Progressive rock gems and danceable rock and roll classics from the 70s through the 00s.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg?format=750w' }
+];
 
 async function loadEvents() {
   const list = document.getElementById('eventsList');
+  let events = FALLBACK_EVENTS;
   try {
-    const res = await fetch(SCRIPT_URL + '?action=getEvents');
-    const data = await res.json();
-    if (!data.success || !data.events.length) {
-      list.innerHTML = '<p class="loading-msg">No events yet. Be the first to submit one!</p>';
-      return;
+    if (SCRIPT_URL && !SCRIPT_URL.includes('YOUR_APPS_SCRIPT')) {
+      const res = await fetch(SCRIPT_URL + '?action=getEvents');
+      const data = await res.json();
+      if (data.success && data.events.length) {
+        events = data.events;
+      }
     }
-    list.innerHTML = data.events.map(ev => {
+  } catch (err) {
+    console.log('Using fallback events (API not configured)');
+  }
+    list.innerHTML = events.map(ev => {
       var dateBlock = '';
       var dateStr = (ev.date || '').toString();
       var isRecurring = dateStr.toLowerCase().startsWith('every');
@@ -365,10 +377,6 @@ async function loadEvents() {
           </div>
         </div>`;
     }).join('');
-  } catch (err) {
-    list.innerHTML = '<p class="loading-msg">Could not load events. Please try again later.</p>';
-    console.error('Error loading events:', err);
-  }
 }
 
 async function submitEvent() {
