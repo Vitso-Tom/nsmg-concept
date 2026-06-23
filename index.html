@@ -37,14 +37,11 @@ body {
 /* ---- NAV ---- */
 nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 100;
   background: rgba(17, 24, 39, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--divider);
-  transition: background 0.3s;
 }
 
 .nav-inner {
@@ -76,14 +73,6 @@ nav {
   object-fit: cover;
 }
 
-.hero-logo {
-  width: clamp(140px, 20vw, 180px);
-  height: auto;
-  margin-bottom: 1.8rem;
-  filter: drop-shadow(0 4px 24px rgba(212, 168, 83, 0.15));
-  border-radius: 50%;
-}
-
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -113,7 +102,6 @@ nav {
 
 .nav-cta:hover { background: var(--copper-hover) !important; }
 
-/* Mobile nav */
 .nav-toggle {
   display: none;
   background: none;
@@ -146,8 +134,15 @@ nav {
   pointer-events: none;
 }
 
+.hero-logo {
+  width: clamp(140px, 20vw, 180px);
+  height: auto;
+  margin-bottom: 1.8rem;
+  filter: drop-shadow(0 4px 24px rgba(212, 168, 83, 0.15));
+  border-radius: 50%;
+}
+
 .hero-eyebrow {
-  font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -238,7 +233,6 @@ section { padding: 5rem 2rem; }
 }
 
 .section-label {
-  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -262,149 +256,22 @@ section { padding: 5rem 2rem; }
   margin-bottom: 2.5rem;
 }
 
-/* ---- TONIGHT BANNER ---- */
-.tonight {
+/* ---- FEATURED EVENTS ---- */
+.featured-events {
   background: var(--slate);
   border-top: 1px solid var(--divider);
   border-bottom: 1px solid var(--divider);
-  padding: 2rem;
+  padding: 4rem 2rem;
 }
 
-.tonight-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.tonight-badge {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  background: var(--copper);
-  color: var(--cream);
-  padding: 0.35rem 0.9rem;
-  border-radius: 3px;
-  white-space: nowrap;
-}
-
-.tonight-text {
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--cream);
-  flex: 1;
-}
-
-.tonight-text strong {
-  color: var(--gold);
-  font-weight: 600;
-}
-
-.tonight-venue {
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-/* ---- EVENTS GRID ---- */
-.events-grid {
+.featured-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.event-card {
-  background: var(--card);
-  border: 1px solid var(--divider);
-  border-radius: 6px;
-  padding: 1.8rem;
-  transition: border-color 0.2s, transform 0.15s;
-  display: flex;
-  flex-direction: column;
-}
-
-.event-card:hover {
-  border-color: rgba(212, 168, 83, 0.35);
-  transform: translateY(-2px);
-}
-
-.event-date {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.event-day {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--gold);
-  line-height: 1;
-}
-
-.event-month {
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-}
-
-.event-name {
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--cream);
-  margin-bottom: 0.4rem;
-}
-
-.event-venue {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-bottom: 0.8rem;
-}
-
-.event-desc {
-  font-size: 0.88rem;
-  color: var(--muted);
-  line-height: 1.55;
-  flex: 1;
-}
-
-.event-tag {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--copper);
-  border: 1px solid rgba(196, 93, 62, 0.3);
-  padding: 0.2rem 0.6rem;
-  border-radius: 3px;
-  margin-top: 1rem;
-  align-self: flex-start;
-}
-
-.events-footer {
-  margin-top: 2rem;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-/* ---- SPOTLIGHTS ---- */
-.spotlights-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.spotlight-card {
+.feat-card {
   background: var(--card);
   border: 1px solid var(--divider);
   border-radius: 6px;
@@ -412,26 +279,94 @@ section { padding: 5rem 2rem; }
   transition: border-color 0.2s, transform 0.15s;
 }
 
-.spotlight-card:hover {
+.feat-card:hover {
   border-color: rgba(212, 168, 83, 0.35);
   transform: translateY(-2px);
 }
 
-.spotlight-img {
+.feat-card-img {
   width: 100%;
-  height: 200px;
-  background: var(--slate);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  color: var(--muted);
+  height: 160px;
+  object-fit: cover;
+  display: block;
   border-bottom: 1px solid var(--divider);
 }
 
-.spotlight-body { padding: 1.5rem; }
+.feat-card-body { padding: 1.3rem; }
 
-.spotlight-name {
+.feat-when {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--copper);
+  margin-bottom: 0.5rem;
+}
+
+.feat-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+.feat-venue {
+  font-size: 0.85rem;
+  color: var(--cream);
+  margin-bottom: 0.1rem;
+}
+
+.feat-address {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 0.7rem;
+}
+
+.feat-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.featured-footer {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ---- GUILD MEMBERS ---- */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.member-card {
+  background: var(--card);
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.member-card:hover {
+  border-color: rgba(212, 168, 83, 0.35);
+  transform: translateY(-2px);
+}
+
+.member-card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid var(--divider);
+}
+
+.member-card-body { padding: 1.8rem; }
+
+.member-name {
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 600;
@@ -439,20 +374,40 @@ section { padding: 5rem 2rem; }
   margin-bottom: 0.3rem;
 }
 
-.spotlight-genre {
+.member-genre {
   font-size: 0.78rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--copper);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.9rem;
 }
 
-.spotlight-bio {
+.member-bio {
   font-size: 0.88rem;
   color: var(--muted);
-  line-height: 1.55;
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
+
+.member-links {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.member-links a {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--cream);
+  text-decoration: none;
+  border: 1px solid rgba(139, 155, 180, 0.25);
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.member-links a:hover { border-color: var(--gold); color: var(--gold); }
 
 /* ---- JOIN ---- */
 .join-section {
@@ -498,7 +453,7 @@ section { padding: 5rem 2rem; }
 }
 
 .join-perks li::before {
-  content: '—';
+  content: '\2014';
   position: absolute;
   left: 0;
   color: var(--copper);
@@ -541,9 +496,7 @@ section { padding: 5rem 2rem; }
 }
 
 .form-group input:focus,
-.form-group select:focus {
-  border-color: var(--gold);
-}
+.form-group select:focus { border-color: var(--gold); }
 
 .form-group select { cursor: pointer; }
 .form-group select option { background: var(--midnight); }
@@ -571,8 +524,11 @@ section { padding: 5rem 2rem; }
 }
 
 /* ---- ABOUT ---- */
-.about-content {
-  max-width: 700px;
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
 }
 
 .about-content p {
@@ -582,20 +538,11 @@ section { padding: 5rem 2rem; }
   margin-bottom: 1.2rem;
 }
 
-.about-content p:last-child { margin-bottom: 0; }
-
 .about-sig {
   margin-top: 2rem;
   font-family: var(--font-display);
   font-size: 1rem;
   color: var(--gold);
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
-  align-items: center;
 }
 
 .about-photo img {
@@ -604,30 +551,6 @@ section { padding: 5rem 2rem; }
   border: 1px solid var(--divider);
   object-fit: cover;
   max-height: 420px;
-}
-
-/* ---- SUBMIT EVENT ---- */
-.submit-banner {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(180deg, var(--midnight) 0%, var(--slate) 100%);
-  border-top: 1px solid var(--divider);
-}
-
-.submit-banner h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-  font-weight: 600;
-  color: var(--gold);
-  margin-bottom: 0.8rem;
-}
-
-.submit-banner p {
-  color: var(--muted);
-  margin-bottom: 1.5rem;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* ---- FOOTER ---- */
@@ -681,14 +604,10 @@ footer {
 
 .footer-col a:hover { color: var(--gold); }
 
-.footer-social {
-  display: flex;
-  gap: 1rem;
-}
+.footer-social { display: flex; gap: 1rem; }
 
 .footer-social a {
-  width: 38px;
-  height: 38px;
+  width: 38px; height: 38px;
   border: 1px solid rgba(139, 155, 180, 0.2);
   border-radius: 4px;
   display: flex;
@@ -717,28 +636,23 @@ footer {
   .nav-links { display: none; }
   .nav-toggle { display: block; }
   .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 64px;
-    left: 0;
-    right: 0;
+    display: flex; flex-direction: column;
+    position: absolute; top: 64px; left: 0; right: 0;
     background: rgba(17, 24, 39, 0.98);
     padding: 1.5rem 2rem;
     border-bottom: 1px solid var(--divider);
     gap: 1rem;
   }
-  .events-grid { grid-template-columns: 1fr; }
-  .spotlights-grid { grid-template-columns: 1fr; }
+  .featured-grid { grid-template-columns: 1fr 1fr; }
+  .members-grid { grid-template-columns: 1fr; }
   .join-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .form-row { grid-template-columns: 1fr; }
-  .tonight-inner { flex-direction: column; align-items: flex-start; }
   .about-grid { grid-template-columns: 1fr; }
   .footer-inner { flex-direction: column; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
+@media (max-width: 520px) {
+  .featured-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -747,11 +661,11 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-brand"><img src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/6853cd7a-9756-4c65-aac0-d9947dd8b084/NSMG+Logo.png" alt="NSMG">North Shore Musicians Guild</a>
+    <a href="index.html" class="nav-brand"><img src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/6853cd7a-9756-4c65-aac0-d9947dd8b084/NSMG+Logo.png" alt="NSMG">North Shore Musicians Guild</a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
     <ul class="nav-links">
-      <li><a href="#events">Events</a></li>
-      <li><a href="#spotlights">Bands</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="#members">Bands</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#join" class="nav-cta">Join the Guild</a></li>
     </ul>
@@ -765,141 +679,118 @@ footer {
   <h1>Supporting North Shore Live Music</h1>
   <p class="hero-sub">Connecting fans, bands, musicians, and venues from Revere to Salisbury and everywhere in between.</p>
   <div class="hero-cta-group">
-    <a href="#events" class="btn-primary">See What's Playing</a>
+    <a href="events.html" class="btn-primary">See What's Playing</a>
     <a href="#join" class="btn-outline">Join the Guild</a>
   </div>
   <div class="hero-geo">Revere &middot; Lynn &middot; Salem &middot; Beverly &middot; Gloucester &middot; Newburyport &middot; Salisbury</div>
 </section>
 
-<!-- TONIGHT BANNER -->
-<div class="tonight">
-  <div class="tonight-inner">
-    <span class="tonight-badge">This Week</span>
-    <div class="tonight-text">
-      <strong>Wicked Trio</strong> at Breakaway, Danvers &mdash; Friday 9PM
-      <span class="tonight-venue">&nbsp;&middot;&nbsp; Classic rock, blues, and soul</span>
-    </div>
-    <a href="#events" class="btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.8rem;">All Events</a>
-  </div>
-</div>
-
-<!-- EVENTS -->
-<section id="events">
+<!-- FEATURED EVENTS -->
+<section class="featured-events">
   <div class="section-inner">
-    <div class="section-label">What's Happening</div>
-    <h2 class="section-title">Upcoming Shows</h2>
-    <p class="section-desc">Live music across the North Shore this month. Know about a show we're missing? Submit it.</p>
+    <div class="section-label">Coming Up</div>
+    <h2 class="section-title">Featured Events</h2>
+    <p class="section-desc">A few of what's happening on the North Shore. See the full calendar for more.</p>
 
-    <div class="events-grid">
+    <div class="featured-grid">
 
-      <div class="event-card">
-        <div class="event-date">
-          <span class="event-day">28</span>
-          <span class="event-month">Jun</span>
+      <div class="feat-card">
+        <img class="feat-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/1782071298911-BN52U4SQKVCSPBYFMBT2/unsplash-image-2UuhMZEChdc.jpg?format=750w" alt="Open Mic Night">
+        <div class="feat-card-body">
+          <div class="feat-when">Every Wednesday &middot; 8:30 PM</div>
+          <div class="feat-name">Open Mic Night</div>
+          <div class="feat-venue">Hugh O'Neill's</div>
+          <div class="feat-address">45 Pleasant St., Malden</div>
+          <div class="feat-desc">A talented network of local singer/songwriters and musicians performing short sets. Hosted by Jeff Munro. Sign-ups begin at 8:00 PM.</div>
         </div>
-        <div class="event-name">Rocktown at 9 Wallis</div>
-        <div class="event-venue">9 Wallis, Beverly</div>
-        <div class="event-desc">A high-energy night of classic rock covers in one of the North Shore's premier venues. Doors at 7, music at 9.</div>
-        <span class="event-tag">Classic Rock</span>
       </div>
 
-      <div class="event-card">
-        <div class="event-date">
-          <span class="event-day">29</span>
-          <span class="event-month">Jun</span>
+      <div class="feat-card">
+        <img class="feat-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/503b0b66-a219-48ab-9fc5-4fea96a4e99f/fred.webp?format=750w" alt="Fred Ellsworth">
+        <div class="feat-card-body">
+          <div class="feat-when">Every Tuesday &middot; 7:00 PM</div>
+          <div class="feat-name">Fred Ellsworth</div>
+          <div class="feat-venue">Berry Tavern</div>
+          <div class="feat-address">2 High St., Danvers</div>
+          <div class="feat-desc">A weekly staple at the Berry Tavern, adding to the already inviting atmosphere of regulars and friendly staff. Great menu with exceptional pizza. Reservations are a safe bet.</div>
         </div>
-        <div class="event-name">Songwriter Showcase</div>
-        <div class="event-venue">The Cabot, Beverly</div>
-        <div class="event-desc">Three local songwriters share original music in a seated, listening-room format. Intimate and unplugged.</div>
-        <span class="event-tag">Original</span>
       </div>
 
-      <div class="event-card">
-        <div class="event-date">
-          <span class="event-day">5</span>
-          <span class="event-month">Jul</span>
+      <div class="feat-card">
+        <img class="feat-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/62dfc18d-198e-4498-bd6e-3b6b8d2c7901/OIP.webp?format=750w" alt="Bare Bones">
+        <div class="feat-card-body">
+          <div class="feat-when">Fri Jun 26 &middot; 6:00 PM</div>
+          <div class="feat-name">Bare Bones</div>
+          <div class="feat-venue">The Deck</div>
+          <div class="feat-address">179 Bridge St., Salisbury</div>
+          <div class="feat-desc">High energy rock to keep you moving, whether you're burning off dinner from the restaurant downstairs or stopping in for a drink with an amazing view.</div>
         </div>
-        <div class="event-name">Blues Jam</div>
-        <div class="event-venue">Gulu-Gulu Cafe, Salem</div>
-        <div class="event-desc">Open jam night. Bring your axe, sit in, or just listen. Backline provided. All levels welcome.</div>
-        <span class="event-tag">Blues / Jam</span>
       </div>
 
-      <div class="event-card">
-        <div class="event-date">
-          <span class="event-day">12</span>
-          <span class="event-month">Jul</span>
+      <div class="feat-card">
+        <img class="feat-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg?format=750w" alt="Ordinary Madness">
+        <div class="feat-card-body">
+          <div class="feat-when">Wed Jul 23</div>
+          <div class="feat-name">Ordinary Madness</div>
+          <div class="feat-venue">Berry Tavern</div>
+          <div class="feat-address">2 High St., Danvers</div>
+          <div class="feat-desc">Covers spanning five decades. Progressive rock gems and danceable rock and roll classics from the 70s through the 00s.</div>
         </div>
-        <div class="event-name">Ordinary Madness</div>
-        <div class="event-venue">Breakaway, Danvers</div>
-        <div class="event-desc">Four-piece cover band bringing the energy. Keys, guitar, bass, drums. You know the drill.</div>
-        <span class="event-tag">Cover Band</span>
-      </div>
-
-      <div class="event-card">
-        <div class="event-date">
-          <span class="event-day">19</span>
-          <span class="event-month">Jul</span>
-        </div>
-        <div class="event-name">North Shore Acoustic Night</div>
-        <div class="event-venue">The Tavern, Gloucester</div>
-        <div class="event-desc">Solo and duo acoustic acts rotating through 30-minute sets. Low-key vibes, great food, harbor views.</div>
-        <span class="event-tag">Acoustic</span>
-      </div>
-
-      <div class="event-card">
-        <div class="event-date">
-          <span class="event-day">26</span>
-          <span class="event-month">Jul</span>
-        </div>
-        <div class="event-name">Summer Block Party</div>
-        <div class="event-venue">Waterfront, Newburyport</div>
-        <div class="event-desc">Three bands, food trucks, and a sunset over the Merrimack. Family-friendly until 8, then the volume goes up.</div>
-        <span class="event-tag">Festival</span>
       </div>
 
     </div>
 
-    <div class="events-footer">
-      <a href="#" class="btn-primary">Submit an Event</a>
-      <span style="font-size: 0.85rem; color: var(--muted);">Free to list. Open to all North Shore venues and artists.</span>
+    <div class="featured-footer">
+      <a href="events.html" class="btn-primary">See All Events</a>
+      <a href="events.html#submit" class="btn-outline">Submit an Event</a>
     </div>
   </div>
 </section>
 
-<!-- BAND SPOTLIGHTS -->
-<section id="spotlights" style="background: var(--slate); border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider);">
+<!-- GUILD MEMBERS -->
+<section id="members">
   <div class="section-inner">
-    <div class="section-label">Band Spotlights</div>
-    <h2 class="section-title">Meet the Musicians</h2>
-    <p class="section-desc">The artists that make the North Shore scene what it is. Want your band featured? Get in touch.</p>
+    <div class="section-label">Guild Members</div>
+    <h2 class="section-title">The Bands</h2>
+    <p class="section-desc">The artists that make the North Shore scene what it is. Want your band featured? Join the Guild.</p>
 
-    <div class="spotlights-grid">
+    <div class="members-grid">
 
-      <div class="spotlight-card">
-        <div class="spotlight-img">Band Photo</div>
-        <div class="spotlight-body">
-          <div class="spotlight-name">The Harbor Dogs</div>
-          <div class="spotlight-genre">Blues Rock</div>
-          <p class="spotlight-bio">Four guys from Gloucester who have been playing the North Shore circuit for twelve years. If you've been to a waterfront bar between Rockport and Salem, you've heard them.</p>
+      <div class="member-card">
+        <img class="member-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/62dfc18d-198e-4498-bd6e-3b6b8d2c7901/OIP.webp?format=750w" alt="Bare Bones">
+        <div class="member-card-body">
+          <div class="member-name">Bare Bones</div>
+          <div class="member-genre">High Energy Rock / Covers</div>
+          <p class="member-bio">A 4-piece band with 4 lead vocalists, based on the North Shore. Bare Bones performs on a regular basis and plays a wide variety of highly recognizable covers and fan favorites. Available for any type of venue and private event.</p>
+          <div class="member-links">
+            <a href="https://www.facebook.com/BareBonesBoston/" target="_blank">Facebook</a>
+          </div>
         </div>
       </div>
 
-      <div class="spotlight-card">
-        <div class="spotlight-img">Band Photo</div>
-        <div class="spotlight-body">
-          <div class="spotlight-name">Side Door</div>
-          <div class="spotlight-genre">Indie / Originals</div>
-          <p class="spotlight-bio">Beverly-based four-piece writing songs about the North Shore the way Springsteen wrote about the Jersey Shore. Currently recording their second EP at a garage studio in Wenham.</p>
+      <div class="member-card">
+        <img class="member-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg?format=750w" alt="Ordinary Madness">
+        <div class="member-card-body">
+          <div class="member-name">Ordinary Madness</div>
+          <div class="member-genre">Progressive Rock / Classic Covers</div>
+          <p class="member-bio">A North Shore band playing covers spanning five decades -- from the iconic anthems to the hidden gems seldom heard by other cover bands. With over two decades of musical camaraderie, the members of Ordinary Madness share a bond as enduring as the songs they play. From progressive rock gems to danceable rock and roll classics of the 70s, 80s, 90s, and 00s, they're here to ignite your senses and take you on a musical journey like no other.</p>
+          <div class="member-links">
+            <a href="https://ordinary-madness.com/" target="_blank">Website</a>
+            <a href="https://www.facebook.com/OrdinaryMadnessMusic/" target="_blank">Facebook</a>
+          </div>
         </div>
       </div>
 
-      <div class="spotlight-card">
-        <div class="spotlight-img">Band Photo</div>
-        <div class="spotlight-body">
-          <div class="spotlight-name">Last Call</div>
-          <div class="spotlight-genre">Classic Rock Covers</div>
-          <p class="spotlight-bio">The house band that every North Shore bar wants on a Saturday night. They know every song you want to hear, and they play all of them too loud. As intended.</p>
+      <div class="member-card">
+        <img class="member-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/503b0b66-a219-48ab-9fc5-4fea96a4e99f/fred.webp?format=750w" alt="Fred Ellsworth">
+        <div class="member-card-body">
+          <div class="member-name">Fred Ellsworth</div>
+          <div class="member-genre">Country / Rock</div>
+          <p class="member-bio">A country artist from Westminster who will draw you in with his guitar and keep you with his soaring vocals. Equally at home with Haggard and Cash as with Petty and Skynyrd, Fred has spent years opening for the likes of Marshal Tucker, Leann Rimes, Tim McGraw, Faith Hill, Willie Nelson, and Brad Paisley, developing a contagious sense of ease and fun in front of any size crowd.</p>
+          <div class="member-links">
+            <a href="https://fredellsworth.com/" target="_blank">Website</a>
+            <a href="https://www.facebook.com/FredEllsworthMusic/" target="_blank">Facebook</a>
+          </div>
         </div>
       </div>
 
@@ -911,7 +802,6 @@ footer {
 <section id="join" class="join-section">
   <div class="section-inner">
     <div class="join-grid">
-
       <div class="join-text">
         <div class="section-label">Get Involved</div>
         <h2>Join the Guild</h2>
@@ -921,10 +811,9 @@ footer {
           <li>Early word on new venue openings and open mics</li>
           <li>Connect with musicians for projects and fill-ins</li>
           <li>Submit your own events for free listing</li>
-          <li>Band Spotlight features for member bands</li>
+          <li>Band profile features for member bands</li>
         </ul>
       </div>
-
       <div>
         <div class="join-form">
           <div class="form-row">
@@ -963,7 +852,6 @@ footer {
           <button class="btn-primary" style="align-self: flex-start; margin-top: 0.5rem;">Join the Guild</button>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -983,18 +871,11 @@ footer {
         </div>
       </div>
       <div class="about-photo">
-        <img src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg" alt="North Shore music scene">
+        <img src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg?format=750w" alt="North Shore music scene">
       </div>
     </div>
   </div>
 </section>
-
-<!-- SUBMIT EVENT BANNER -->
-<div class="submit-banner">
-  <h2>Have a Show Coming Up?</h2>
-  <p>Listing events is free and open to any North Shore venue or artist. Get your show in front of the community.</p>
-  <a href="#" class="btn-primary">Submit an Event</a>
-</div>
 
 <!-- FOOTER -->
 <footer>
@@ -1010,16 +891,15 @@ footer {
     </div>
     <div class="footer-col">
       <h4>Navigate</h4>
-      <a href="#events">Events</a>
-      <a href="#spotlights">Band Spotlights</a>
+      <a href="events.html">Events</a>
+      <a href="#members">Bands</a>
       <a href="#about">About</a>
       <a href="#join">Join</a>
     </div>
     <div class="footer-col">
       <h4>Get Involved</h4>
-      <a href="#">Submit an Event</a>
-      <a href="#">Request a Band Spotlight</a>
-      <a href="#">List Your Venue</a>
+      <a href="events.html#submit">Submit an Event</a>
+      <a href="#join">Join the Guild</a>
       <a href="mailto:nsmusiciansguild@gmail.com">Contact</a>
     </div>
     <div class="footer-col">
@@ -1034,11 +914,8 @@ footer {
 </footer>
 
 <script>
-// Close mobile nav on link click
 document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.querySelector('.nav-links').classList.remove('open');
-  });
+  link.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
 });
 </script>
 

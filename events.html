@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Live music events across Boston's North Shore. Open mics, cover bands, solo artists, and more from Revere to Salisbury.">
+<title>Events — North Shore Musicians Guild</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --midnight: #111827;
+  --slate: #1e2533;
+  --card: #252d3d;
+  --gold: #d4a853;
+  --copper: #c45d3e;
+  --copper-hover: #d96e4f;
+  --cream: #e8e0d0;
+  --muted: #8b9bb4;
+  --divider: rgba(212, 168, 83, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--midnight);
+  color: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(17, 24, 39, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--divider);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 64px;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.nav-brand img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+.nav-links a.active { color: var(--gold); }
+
+.nav-cta {
+  background: var(--copper) !important;
+  color: var(--cream) !important;
+  padding: 0.45rem 1.1rem;
+  border-radius: 4px;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover { background: var(--copper-hover) !important; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Page header */
+.page-header {
+  padding: 8rem 2rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+.page-header p {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 560px;
+}
+
+/* Events list */
+.events-section {
+  padding: 0 2rem 4rem;
+}
+
+.events-list {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.event-row {
+  display: grid;
+  grid-template-columns: 180px 100px 1fr;
+  gap: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  overflow: hidden;
+  align-items: center;
+  transition: border-color 0.2s;
+}
+
+.event-img {
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.event-details { padding: 1.5rem 1.5rem 1.5rem 0; }
+
+.event-row:hover { border-color: rgba(212, 168, 83, 0.35); }
+
+.event-date-block {
+  text-align: center;
+  padding-top: 0.2rem;
+}
+
+.event-date-block .day {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.event-date-block .month {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.event-date-block .recur {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--copper);
+  margin-top: 0.15rem;
+}
+
+.event-details h3 {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 0.2rem;
+}
+
+.event-details .venue {
+  font-size: 0.9rem;
+  color: var(--gold);
+  margin-bottom: 0.15rem;
+}
+
+.event-details .address {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.event-details .desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.event-details .time {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--copper);
+  margin-top: 0.6rem;
+}
+
+/* Submit section */
+.submit-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--divider);
+}
+
+.submit-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.submit-section p {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-primary {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2rem;
+  background: var(--copper);
+  color: var(--cream);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-primary:hover { background: var(--copper-hover); transform: translateY(-1px); }
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--divider);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 0; right: 0;
+    background: rgba(17, 24, 39, 0.98);
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--divider);
+    gap: 1rem;
+  }
+  .event-row {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .event-img { height: 140px; }
+  .event-date-block {
+    text-align: left;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .event-date-block .day { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><img src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/6853cd7a-9756-4c65-aac0-d9947dd8b084/NSMG+Logo.png" alt="NSMG">North Shore Musicians Guild</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="events.html" class="active">Events</a></li>
+      <li><a href="index.html#members">Bands</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#join" class="nav-cta">Join the Guild</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>Events</h1>
+  <p>Live music across the North Shore. Recurring shows, one-off gigs, open mics, and everything in between.</p>
+</div>
+
+<div class="events-section">
+  <div class="events-list">
+
+    <!-- Recurring: Open Mic -->
+    <div class="event-row">
+      <img class="event-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/1782071298911-BN52U4SQKVCSPBYFMBT2/unsplash-image-2UuhMZEChdc.jpg?format=750w" alt="Open Mic Night">
+      <div class="event-date-block">
+        <div class="recur">Weekly</div>
+        <div class="day">Wed</div>
+      </div>
+      <div class="event-details">
+        <h3>Open Mic Night</h3>
+        <div class="venue">Hugh O'Neill's</div>
+        <div class="address">45 Pleasant St., Malden</div>
+        <p class="desc">Open Mic Night showcases a talented network of local singer/songwriters and musicians performing short sets. Hosted by Jeff Munro.</p>
+        <span class="time">Every Wednesday &middot; 8:30 PM (Sign-ups at 8:00 PM)</span>
+      </div>
+    </div>
+
+    <!-- Recurring: Fred Ellsworth -->
+    <div class="event-row">
+      <img class="event-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/503b0b66-a219-48ab-9fc5-4fea96a4e99f/fred.webp?format=750w" alt="Fred Ellsworth">
+      <div class="event-date-block">
+        <div class="recur">Weekly</div>
+        <div class="day">Tue</div>
+      </div>
+      <div class="event-details">
+        <h3>Fred Ellsworth</h3>
+        <div class="venue">Berry Tavern</div>
+        <div class="address">2 High St., Danvers</div>
+        <p class="desc">Fred Ellsworth is a weekly staple at The Berry Tavern, adding to the already inviting atmosphere of regulars and friendly staff. Great menu with exceptional pizza!</p>
+        <span class="time">Every Tuesday &middot; 7:00 PM (Reservations are a safe bet)</span>
+      </div>
+    </div>
+
+    <!-- One-off: Bare Bones -->
+    <div class="event-row">
+      <img class="event-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/62dfc18d-198e-4498-bd6e-3b6b8d2c7901/OIP.webp?format=750w" alt="Bare Bones">
+      <div class="event-date-block">
+        <div class="day">26</div>
+        <div class="month">Jun</div>
+      </div>
+      <div class="event-details">
+        <h3>Bare Bones</h3>
+        <div class="venue">The Deck</div>
+        <div class="address">179 Bridge St., Salisbury</div>
+        <p class="desc">Bare Bones returns to The Deck for another great night of high energy rock to keep you moving, whether you're burning off your dinner from the restaurant downstairs or stopping in for a drink with an amazing view.</p>
+        <span class="time">Friday, June 26 &middot; 6:00 PM</span>
+      </div>
+    </div>
+
+    <!-- One-off: Ordinary Madness -->
+    <div class="event-row">
+      <img class="event-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg?format=750w" alt="Ordinary Madness">
+      <div class="event-date-block">
+        <div class="day">23</div>
+        <div class="month">Jul</div>
+      </div>
+      <div class="event-details">
+        <h3>Ordinary Madness</h3>
+        <div class="venue">Berry Tavern</div>
+        <div class="address">2 High St., Danvers</div>
+        <p class="desc">Covers spanning five decades. Progressive rock gems and danceable rock and roll classics from the 70s through the 00s -- from the iconic anthems to the hidden gems seldom heard by other cover bands.</p>
+        <span class="time">Wednesday, July 23</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="submit-section" id="submit">
+  <h2>Have a Show Coming Up?</h2>
+  <p>Listing events is free and open to any North Shore venue or artist. Get your show in front of the community.</p>
+  <a href="mailto:nsmusiciansguild@gmail.com?subject=Event%20Submission" class="btn-primary">Submit an Event</a>
+</div>
+
+<footer>
+  &copy; 2026 <a href="index.html">North Shore Musicians Guild</a>. Built for the scene.
+</footer>
+
+<script>
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>

@@ -774,10 +774,10 @@ footer {
 <!-- TONIGHT BANNER -->
 <div class="tonight">
   <div class="tonight-inner">
-    <span class="tonight-badge">Coming Up</span>
+    <span class="tonight-badge">This Week</span>
     <div class="tonight-text">
-      <strong>Bare Bones</strong> this Friday on the North Shore
-      <span class="tonight-venue">&nbsp;&middot;&nbsp; Don't miss it</span>
+      <strong>Wicked Trio</strong> at Breakaway, Danvers &mdash; Friday 9PM
+      <span class="tonight-venue">&nbsp;&middot;&nbsp; Classic rock, blues, and soul</span>
     </div>
     <a href="#events" class="btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.8rem;">All Events</a>
   </div>
@@ -790,56 +790,74 @@ footer {
     <h2 class="section-title">Upcoming Shows</h2>
     <p class="section-desc">Live music across the North Shore this month. Know about a show we're missing? Submit it.</p>
 
-    <div class="events-grid" id="eventsGrid">
-
-      <div class="event-card">
-        <div class="event-date">
-          <span class="event-day">27</span>
-          <span class="event-month">Jun</span>
-        </div>
-        <div class="event-name">Bare Bones</div>
-        <div class="event-venue">North Shore Venue TBA</div>
-        <div class="event-desc">Stripped-down, raw energy. Bare Bones brings it every time they hit a stage on the North Shore.</div>
-        <span class="event-tag">Live Music</span>
-      </div>
+    <div class="events-grid">
 
       <div class="event-card">
         <div class="event-date">
           <span class="event-day">28</span>
           <span class="event-month">Jun</span>
         </div>
-        <div class="event-name">Fred Elsworth</div>
-        <div class="event-venue">North Shore Venue TBA</div>
-        <div class="event-desc">A North Shore favorite. Fred Elsworth delivers a set that keeps the crowd locked in from first note to last.</div>
-        <span class="event-tag">Live Music</span>
+        <div class="event-name">Rocktown at 9 Wallis</div>
+        <div class="event-venue">9 Wallis, Beverly</div>
+        <div class="event-desc">A high-energy night of classic rock covers in one of the North Shore's premier venues. Doors at 7, music at 9.</div>
+        <span class="event-tag">Classic Rock</span>
       </div>
 
       <div class="event-card">
         <div class="event-date">
-          <span class="event-day">4</span>
+          <span class="event-day">29</span>
+          <span class="event-month">Jun</span>
+        </div>
+        <div class="event-name">Songwriter Showcase</div>
+        <div class="event-venue">The Cabot, Beverly</div>
+        <div class="event-desc">Three local songwriters share original music in a seated, listening-room format. Intimate and unplugged.</div>
+        <span class="event-tag">Original</span>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date">
+          <span class="event-day">5</span>
           <span class="event-month">Jul</span>
         </div>
-        <div class="event-name">Open Mic Night</div>
-        <div class="event-venue">Hugh O'Neill's, Malden</div>
-        <div class="event-desc">Bring your voice, your guitar, your poetry -- whatever you've got. Sign-up at the door. All levels, all styles. A great room for it.</div>
-        <span class="event-tag">Open Mic</span>
+        <div class="event-name">Blues Jam</div>
+        <div class="event-venue">Gulu-Gulu Cafe, Salem</div>
+        <div class="event-desc">Open jam night. Bring your axe, sit in, or just listen. Backline provided. All levels welcome.</div>
+        <span class="event-tag">Blues / Jam</span>
       </div>
 
       <div class="event-card">
         <div class="event-date">
-          <span class="event-day">23</span>
+          <span class="event-day">12</span>
           <span class="event-month">Jul</span>
         </div>
         <div class="event-name">Ordinary Madness</div>
-        <div class="event-venue">Berry Tavern, Danvers</div>
-        <div class="event-desc">Four-piece cover band. Keys, guitar, bass, drums. High energy, packed dance floor, songs you know by heart.</div>
+        <div class="event-venue">Breakaway, Danvers</div>
+        <div class="event-desc">Four-piece cover band bringing the energy. Keys, guitar, bass, drums. You know the drill.</div>
         <span class="event-tag">Cover Band</span>
       </div>
 
-    </div>
+      <div class="event-card">
+        <div class="event-date">
+          <span class="event-day">19</span>
+          <span class="event-month">Jul</span>
+        </div>
+        <div class="event-name">North Shore Acoustic Night</div>
+        <div class="event-venue">The Tavern, Gloucester</div>
+        <div class="event-desc">Solo and duo acoustic acts rotating through 30-minute sets. Low-key vibes, great food, harbor views.</div>
+        <span class="event-tag">Acoustic</span>
+      </div>
 
-    <div id="eventsShowMore" style="display: none; text-align: center; margin-top: 1.5rem;">
-      <button class="btn-outline" onclick="document.querySelectorAll('.event-card.hidden-event').forEach(c => c.style.display = 'flex'); this.parentElement.style.display = 'none';">Show All Events</button>
+      <div class="event-card">
+        <div class="event-date">
+          <span class="event-day">26</span>
+          <span class="event-month">Jul</span>
+        </div>
+        <div class="event-name">Summer Block Party</div>
+        <div class="event-venue">Waterfront, Newburyport</div>
+        <div class="event-desc">Three bands, food trucks, and a sunset over the Merrimack. Family-friendly until 8, then the volume goes up.</div>
+        <span class="event-tag">Festival</span>
+      </div>
+
     </div>
 
     <div class="events-footer">
@@ -1022,21 +1040,6 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     document.querySelector('.nav-links').classList.remove('open');
   });
 });
-
-// Limit visible events to 6, show "Show All" button if more
-(function() {
-  const cards = document.querySelectorAll('#eventsGrid .event-card');
-  const maxVisible = 6;
-  if (cards.length > maxVisible) {
-    cards.forEach((card, i) => {
-      if (i >= maxVisible) {
-        card.classList.add('hidden-event');
-        card.style.display = 'none';
-      }
-    });
-    document.getElementById('eventsShowMore').style.display = 'block';
-  }
-})();
 </script>
 
 </body>
