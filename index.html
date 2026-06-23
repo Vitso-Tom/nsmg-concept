@@ -34,100 +34,59 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---- NAV ---- */
 nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(17, 24, 39, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--divider);
 }
 
 .nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  height: 64px;
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 64px;
 }
 
 .nav-brand {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--gold);
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 600;
+  color: var(--gold); letter-spacing: 0.04em; text-decoration: none;
+  display: flex; align-items: center; gap: 0.7rem;
 }
 
-.nav-brand img {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  object-fit: cover;
-}
+.nav-brand img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
 
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
 
 .nav-links a {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--muted);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: 0.85rem; font-weight: 500; color: var(--muted);
+  text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em;
   transition: color 0.2s;
 }
 
 .nav-links a:hover { color: var(--gold); }
 
 .nav-cta {
-  background: var(--copper) !important;
-  color: var(--cream) !important;
-  padding: 0.45rem 1.1rem;
-  border-radius: 4px;
+  background: var(--copper) !important; color: var(--cream) !important;
+  padding: 0.45rem 1.1rem; border-radius: 4px;
   transition: background 0.2s !important;
 }
 
 .nav-cta:hover { background: var(--copper-hover) !important; }
 
 .nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--cream);
-  font-size: 1.5rem;
-  cursor: pointer;
+  display: none; background: none; border: none;
+  color: var(--cream); font-size: 1.5rem; cursor: pointer;
 }
 
-/* ---- HERO ---- */
 .hero {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 6rem 2rem 4rem;
-  position: relative;
-  overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 6rem 2rem 4rem;
+  position: relative; overflow: hidden;
 }
 
 .hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
+  content: ''; position: absolute; inset: 0;
   background:
     radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212, 168, 83, 0.06) 0%, transparent 70%),
     radial-gradient(circle at 20% 80%, rgba(196, 93, 62, 0.04) 0%, transparent 50%);
@@ -135,486 +94,265 @@ nav {
 }
 
 .hero-logo {
-  width: clamp(140px, 20vw, 180px);
-  height: auto;
-  margin-bottom: 1.8rem;
-  filter: drop-shadow(0 4px 24px rgba(212, 168, 83, 0.15));
-  border-radius: 50%;
+  width: clamp(140px, 20vw, 180px); height: auto; margin-bottom: 1.8rem;
+  filter: drop-shadow(0 4px 24px rgba(212, 168, 83, 0.15)); border-radius: 50%;
 }
 
 .hero-eyebrow {
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--copper);
-  margin-bottom: 1.5rem;
+  font-size: 0.8rem; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.2em; color: var(--copper); margin-bottom: 1.5rem;
 }
 
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-  font-weight: 700;
-  color: var(--gold);
-  line-height: 1.15;
-  max-width: 800px;
-  margin-bottom: 1.2rem;
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem); font-weight: 700;
+  color: var(--gold); line-height: 1.15; max-width: 800px; margin-bottom: 1.2rem;
 }
 
 .hero-sub {
-  font-size: 1.15rem;
-  font-weight: 300;
-  color: var(--muted);
-  max-width: 540px;
-  margin-bottom: 2.5rem;
+  font-size: 1.15rem; font-weight: 300; color: var(--muted);
+  max-width: 540px; margin-bottom: 2.5rem;
 }
 
-.hero-cta-group {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+.hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
 .btn-primary {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.85rem 2rem;
-  background: var(--copper);
-  color: var(--cream);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
+  display: inline-block; font-family: var(--font-body);
+  font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 0.85rem 2rem; background: var(--copper); color: var(--cream);
+  border: none; border-radius: 4px; cursor: pointer; text-decoration: none;
   transition: background 0.2s, transform 0.15s;
 }
 
 .btn-primary:hover { background: var(--copper-hover); transform: translateY(-1px); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 .btn-outline {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.85rem 2rem;
-  background: transparent;
-  color: var(--gold);
-  border: 1px solid var(--gold);
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  display: inline-block; font-family: var(--font-body);
+  font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 0.85rem 2rem; background: transparent; color: var(--gold);
+  border: 1px solid var(--gold); border-radius: 4px; cursor: pointer;
+  text-decoration: none; transition: background 0.2s, color 0.2s;
 }
 
 .btn-outline:hover { background: rgba(212, 168, 83, 0.1); }
 
 .hero-geo {
-  margin-top: 3.5rem;
-  font-size: 0.78rem;
-  font-weight: 400;
-  color: var(--muted);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  opacity: 0.6;
+  margin-top: 3.5rem; font-size: 0.78rem; font-weight: 400;
+  color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.6;
 }
 
-/* ---- SECTIONS ---- */
 section { padding: 5rem 2rem; }
-
-.section-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-}
+.section-inner { max-width: 1100px; margin: 0 auto; }
 
 .section-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--copper);
-  margin-bottom: 0.75rem;
+  font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.2em; color: var(--copper); margin-bottom: 0.75rem;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 600;
-  color: var(--gold);
-  margin-bottom: 0.6rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600;
+  color: var(--gold); margin-bottom: 0.6rem;
 }
 
-.section-desc {
-  font-size: 1rem;
-  color: var(--muted);
-  max-width: 560px;
-  margin-bottom: 2.5rem;
-}
+.section-desc { font-size: 1rem; color: var(--muted); max-width: 560px; margin-bottom: 2.5rem; }
 
-/* ---- FEATURED EVENTS ---- */
 .featured-events {
   background: var(--slate);
-  border-top: 1px solid var(--divider);
-  border-bottom: 1px solid var(--divider);
+  border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider);
   padding: 4rem 2rem;
 }
 
 .featured-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem; margin-bottom: 2rem;
 }
 
 .feat-card {
-  background: var(--card);
-  border: 1px solid var(--divider);
-  border-radius: 6px;
-  overflow: hidden;
-  transition: border-color 0.2s, transform 0.15s;
+  background: var(--card); border: 1px solid var(--divider); border-radius: 6px;
+  overflow: hidden; transition: border-color 0.2s, transform 0.15s;
 }
 
-.feat-card:hover {
-  border-color: rgba(212, 168, 83, 0.35);
-  transform: translateY(-2px);
-}
+.feat-card:hover { border-color: rgba(212, 168, 83, 0.35); transform: translateY(-2px); }
 
 .feat-card-img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  display: block;
-  border-bottom: 1px solid var(--divider);
+  width: 100%; height: 160px; object-fit: cover; object-position: top;
+  display: block; border-bottom: 1px solid var(--divider);
 }
 
 .feat-card-body { padding: 1.3rem; }
 
 .feat-when {
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--copper);
-  margin-bottom: 0.5rem;
+  font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--copper); margin-bottom: 0.5rem;
 }
 
 .feat-name {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--gold);
-  margin-bottom: 0.3rem;
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 600;
+  color: var(--gold); margin-bottom: 0.3rem;
 }
 
-.feat-venue {
-  font-size: 0.85rem;
-  color: var(--cream);
-  margin-bottom: 0.1rem;
+.feat-venue { font-size: 0.85rem; color: var(--cream); margin-bottom: 0.1rem; }
+.feat-address { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.7rem; }
+.feat-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
+
+.featured-footer { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+
+.loading-msg {
+  font-size: 0.9rem; color: var(--muted); font-style: italic; padding: 2rem 0;
 }
 
-.feat-address {
-  font-size: 0.78rem;
-  color: var(--muted);
-  margin-bottom: 0.7rem;
-}
-
-.feat-desc {
-  font-size: 0.85rem;
-  color: var(--muted);
-  line-height: 1.55;
-}
-
-.featured-footer {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-/* ---- GUILD MEMBERS ---- */
 .members-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;
 }
 
 .member-card {
-  background: var(--card);
-  border: 1px solid var(--divider);
-  border-radius: 6px;
-  overflow: hidden;
-  transition: border-color 0.2s, transform 0.15s;
+  background: var(--card); border: 1px solid var(--divider); border-radius: 6px;
+  overflow: hidden; transition: border-color 0.2s, transform 0.15s;
 }
 
-.member-card:hover {
-  border-color: rgba(212, 168, 83, 0.35);
-  transform: translateY(-2px);
-}
+.member-card:hover { border-color: rgba(212, 168, 83, 0.35); transform: translateY(-2px); }
 
 .member-card-img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-  border-bottom: 1px solid var(--divider);
+  width: 100%; height: 220px; object-fit: cover; object-position: top;
+  display: block; border-bottom: 1px solid var(--divider);
 }
 
 .member-card-body { padding: 1.8rem; }
 
 .member-name {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--gold);
-  margin-bottom: 0.3rem;
+  font-family: var(--font-display); font-size: 1.15rem; font-weight: 600;
+  color: var(--gold); margin-bottom: 0.3rem;
 }
 
 .member-genre {
-  font-size: 0.78rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--copper);
-  margin-bottom: 0.9rem;
+  font-size: 0.78rem; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--copper); margin-bottom: 0.9rem;
 }
 
-.member-bio {
-  font-size: 0.88rem;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
+.member-bio { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
 
-.member-links {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-}
+.member-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
 
 .member-links a {
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--cream);
-  text-decoration: none;
-  border: 1px solid rgba(139, 155, 180, 0.25);
-  padding: 0.3rem 0.7rem;
-  border-radius: 3px;
+  font-size: 0.78rem; font-weight: 500; color: var(--cream);
+  text-decoration: none; border: 1px solid rgba(139, 155, 180, 0.25);
+  padding: 0.3rem 0.7rem; border-radius: 3px;
   transition: border-color 0.2s, color 0.2s;
 }
 
 .member-links a:hover { border-color: var(--gold); color: var(--gold); }
 
-/* ---- JOIN ---- */
 .join-section {
   background: var(--slate);
-  border-top: 1px solid var(--divider);
-  border-bottom: 1px solid var(--divider);
+  border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider);
 }
 
-.join-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
+.join-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
 
 .join-text h2 {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 600;
-  color: var(--gold);
-  margin-bottom: 1rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600;
+  color: var(--gold); margin-bottom: 1rem;
 }
 
-.join-text p {
-  font-size: 1rem;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
-  line-height: 1.65;
-}
+.join-text p { font-size: 1rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.65; }
 
-.join-perks {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
+.join-perks { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
 
-.join-perks li {
-  font-size: 0.9rem;
-  color: var(--cream);
-  padding-left: 1.4rem;
-  position: relative;
-}
+.join-perks li { font-size: 0.9rem; color: var(--cream); padding-left: 1.4rem; position: relative; }
 
 .join-perks li::before {
-  content: '\2014';
-  position: absolute;
-  left: 0;
-  color: var(--copper);
-  font-weight: 600;
+  content: '\2014'; position: absolute; left: 0; color: var(--copper); font-weight: 600;
 }
 
-.join-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
+.join-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
 
 .form-group label {
-  font-size: 0.78rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
+  font-size: 0.78rem; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--muted);
 }
 
-.form-group input,
-.form-group select {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  padding: 0.7rem 0.9rem;
-  background: var(--midnight);
-  border: 1px solid rgba(139, 155, 180, 0.2);
-  border-radius: 4px;
-  color: var(--cream);
-  outline: none;
-  transition: border-color 0.2s;
+.form-group input, .form-group select {
+  font-family: var(--font-body); font-size: 0.95rem; padding: 0.7rem 0.9rem;
+  background: var(--midnight); border: 1px solid rgba(139, 155, 180, 0.2);
+  border-radius: 4px; color: var(--cream); outline: none; transition: border-color 0.2s;
 }
 
-.form-group input:focus,
-.form-group select:focus { border-color: var(--gold); }
-
+.form-group input:focus, .form-group select:focus { border-color: var(--gold); }
 .form-group select { cursor: pointer; }
 .form-group select option { background: var(--midnight); }
 
-.form-checkboxes {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
+.form-checkboxes { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 
 .form-check {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--cream);
-  cursor: pointer;
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.85rem; color: var(--cream); cursor: pointer;
 }
 
 .form-check input[type="checkbox"] {
-  accent-color: var(--copper);
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
+  accent-color: var(--copper); width: 16px; height: 16px; cursor: pointer;
 }
 
-/* ---- ABOUT ---- */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
-  align-items: center;
+.form-success {
+  background: rgba(212, 168, 83, 0.1); border: 1px solid var(--gold);
+  border-radius: 4px; padding: 1rem 1.2rem; font-size: 0.9rem; color: var(--gold);
+  display: none;
 }
+
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
 
 .about-content p {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: var(--cream);
-  margin-bottom: 1.2rem;
+  font-size: 1.05rem; line-height: 1.75; color: var(--cream); margin-bottom: 1.2rem;
 }
 
 .about-sig {
-  margin-top: 2rem;
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--gold);
+  margin-top: 2rem; font-family: var(--font-display); font-size: 1rem; color: var(--gold);
 }
 
 .about-photo img {
-  width: 100%;
-  border-radius: 6px;
-  border: 1px solid var(--divider);
-  object-fit: cover;
-  max-height: 420px;
+  width: 100%; border-radius: 6px; border: 1px solid var(--divider);
+  object-fit: cover; max-height: 420px;
 }
 
-/* ---- FOOTER ---- */
 footer {
-  border-top: 1px solid var(--divider);
-  padding: 3rem 2rem;
-  background: var(--midnight);
+  border-top: 1px solid var(--divider); padding: 3rem 2rem; background: var(--midnight);
 }
 
 .footer-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 2rem;
+  max-width: 1100px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-wrap: wrap; gap: 2rem;
 }
 
 .footer-brand {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--gold);
-  margin-bottom: 0.5rem;
+  font-family: var(--font-display); font-size: 1rem; font-weight: 600;
+  color: var(--gold); margin-bottom: 0.5rem;
 }
 
-.footer-tagline {
-  font-size: 0.82rem;
-  color: var(--muted);
-  max-width: 280px;
-}
+.footer-tagline { font-size: 0.82rem; color: var(--muted); max-width: 280px; }
 
 .footer-col h4 {
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--muted);
-  margin-bottom: 0.8rem;
+  font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--muted); margin-bottom: 0.8rem;
 }
 
 .footer-col a {
-  display: block;
-  font-size: 0.88rem;
-  color: var(--cream);
-  text-decoration: none;
-  margin-bottom: 0.4rem;
-  transition: color 0.2s;
+  display: block; font-size: 0.88rem; color: var(--cream);
+  text-decoration: none; margin-bottom: 0.4rem; transition: color 0.2s;
 }
 
 .footer-col a:hover { color: var(--gold); }
-
 .footer-social { display: flex; gap: 1rem; }
 
 .footer-social a {
   width: 38px; height: 38px;
-  border: 1px solid rgba(139, 155, 180, 0.2);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: border-color 0.2s, background 0.2s;
+  border: 1px solid rgba(139, 155, 180, 0.2); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; transition: border-color 0.2s, background 0.2s;
 }
 
 .footer-social a:hover { border-color: var(--gold); background: rgba(212, 168, 83, 0.08); }
@@ -622,16 +360,10 @@ footer {
 .footer-social a:hover svg { fill: var(--gold); }
 
 .footer-bottom {
-  max-width: 1100px;
-  margin: 2rem auto 0;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--divider);
-  font-size: 0.78rem;
-  color: var(--muted);
-  opacity: 0.6;
+  max-width: 1100px; margin: 2rem auto 0; padding-top: 1.5rem;
+  border-top: 1px solid var(--divider); font-size: 0.78rem; color: var(--muted); opacity: 0.6;
 }
 
-/* ---- RESPONSIVE ---- */
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-toggle { display: block; }
@@ -639,9 +371,7 @@ footer {
     display: flex; flex-direction: column;
     position: absolute; top: 64px; left: 0; right: 0;
     background: rgba(17, 24, 39, 0.98);
-    padding: 1.5rem 2rem;
-    border-bottom: 1px solid var(--divider);
-    gap: 1rem;
+    padding: 1.5rem 2rem; border-bottom: 1px solid var(--divider); gap: 1rem;
   }
   .featured-grid { grid-template-columns: 1fr 1fr; }
   .members-grid { grid-template-columns: 1fr; }
@@ -658,7 +388,6 @@ footer {
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-brand"><img src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/6853cd7a-9756-4c65-aac0-d9947dd8b084/NSMG+Logo.png" alt="NSMG">North Shore Musicians Guild</a>
@@ -672,7 +401,6 @@ footer {
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <img src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/6853cd7a-9756-4c65-aac0-d9947dd8b084/NSMG+Logo.png" alt="North Shore Musicians Guild Logo" class="hero-logo">
   <div class="hero-eyebrow">Boston's North Shore</div>
@@ -685,61 +413,14 @@ footer {
   <div class="hero-geo">Revere &middot; Lynn &middot; Salem &middot; Beverly &middot; Gloucester &middot; Newburyport &middot; Salisbury</div>
 </section>
 
-<!-- FEATURED EVENTS -->
 <section class="featured-events">
   <div class="section-inner">
     <div class="section-label">Coming Up</div>
     <h2 class="section-title">Featured Events</h2>
     <p class="section-desc">A few of what's happening on the North Shore. See the full calendar for more.</p>
-
-    <div class="featured-grid">
-
-      <div class="feat-card">
-        <img class="feat-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/1782071298911-BN52U4SQKVCSPBYFMBT2/unsplash-image-2UuhMZEChdc.jpg?format=750w" alt="Open Mic Night">
-        <div class="feat-card-body">
-          <div class="feat-when">Every Wednesday &middot; 8:30 PM</div>
-          <div class="feat-name">Open Mic Night</div>
-          <div class="feat-venue">Hugh O'Neill's</div>
-          <div class="feat-address">45 Pleasant St., Malden</div>
-          <div class="feat-desc">A talented network of local singer/songwriters and musicians performing short sets. Hosted by Jeff Munro. Sign-ups begin at 8:00 PM.</div>
-        </div>
-      </div>
-
-      <div class="feat-card">
-        <img class="feat-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/503b0b66-a219-48ab-9fc5-4fea96a4e99f/fred.webp?format=750w" alt="Fred Ellsworth">
-        <div class="feat-card-body">
-          <div class="feat-when">Every Tuesday &middot; 7:00 PM</div>
-          <div class="feat-name">Fred Ellsworth</div>
-          <div class="feat-venue">Berry Tavern</div>
-          <div class="feat-address">2 High St., Danvers</div>
-          <div class="feat-desc">A weekly staple at the Berry Tavern, adding to the already inviting atmosphere of regulars and friendly staff. Great menu with exceptional pizza. Reservations are a safe bet.</div>
-        </div>
-      </div>
-
-      <div class="feat-card">
-        <img class="feat-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/62dfc18d-198e-4498-bd6e-3b6b8d2c7901/OIP.webp?format=750w" alt="Bare Bones">
-        <div class="feat-card-body">
-          <div class="feat-when">Fri Jun 26 &middot; 6:00 PM</div>
-          <div class="feat-name">Bare Bones</div>
-          <div class="feat-venue">The Deck</div>
-          <div class="feat-address">179 Bridge St., Salisbury</div>
-          <div class="feat-desc">High energy rock to keep you moving, whether you're burning off dinner from the restaurant downstairs or stopping in for a drink with an amazing view.</div>
-        </div>
-      </div>
-
-      <div class="feat-card">
-        <img class="feat-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg?format=750w" alt="Ordinary Madness">
-        <div class="feat-card-body">
-          <div class="feat-when">Wed Jul 23</div>
-          <div class="feat-name">Ordinary Madness</div>
-          <div class="feat-venue">Berry Tavern</div>
-          <div class="feat-address">2 High St., Danvers</div>
-          <div class="feat-desc">Covers spanning five decades. Progressive rock gems and danceable rock and roll classics from the 70s through the 00s.</div>
-        </div>
-      </div>
-
+    <div class="featured-grid" id="featuredGrid">
+      <p class="loading-msg">Loading events...</p>
     </div>
-
     <div class="featured-footer">
       <a href="events.html" class="btn-primary">See All Events</a>
       <a href="events.html#submit" class="btn-outline">Submit an Event</a>
@@ -747,13 +428,11 @@ footer {
   </div>
 </section>
 
-<!-- GUILD MEMBERS -->
 <section id="members">
   <div class="section-inner">
     <div class="section-label">Guild Members</div>
     <h2 class="section-title">The Bands</h2>
     <p class="section-desc">The artists that make the North Shore scene what it is. Want your band featured? Join the Guild.</p>
-
     <div class="members-grid">
 
       <div class="member-card">
@@ -798,7 +477,6 @@ footer {
   </div>
 </section>
 
-<!-- JOIN -->
 <section id="join" class="join-section">
   <div class="section-inner">
     <div class="join-grid">
@@ -815,27 +493,27 @@ footer {
         </ul>
       </div>
       <div>
-        <div class="join-form">
+        <div class="join-form" id="joinForm">
           <div class="form-row">
             <div class="form-group">
               <label for="fname">First Name</label>
-              <input type="text" id="fname" placeholder="First name">
+              <input type="text" id="fname" placeholder="First name" required>
             </div>
             <div class="form-group">
               <label for="lname">Last Name</label>
-              <input type="text" id="lname" placeholder="Last name">
+              <input type="text" id="lname" placeholder="Last name" required>
             </div>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="you@example.com">
+            <input type="email" id="email" placeholder="you@example.com" required>
           </div>
           <div class="form-group">
             <label>I am a...</label>
             <div class="form-checkboxes">
-              <label class="form-check"><input type="checkbox"> Musician</label>
-              <label class="form-check"><input type="checkbox"> Fan</label>
-              <label class="form-check"><input type="checkbox"> Venue Rep</label>
+              <label class="form-check"><input type="checkbox" value="Musician"> Musician</label>
+              <label class="form-check"><input type="checkbox" value="Fan"> Fan</label>
+              <label class="form-check"><input type="checkbox" value="Venue Rep"> Venue Rep</label>
             </div>
           </div>
           <div class="form-group">
@@ -849,14 +527,16 @@ footer {
               <option>All of the above</option>
             </select>
           </div>
-          <button class="btn-primary" style="align-self: flex-start; margin-top: 0.5rem;">Join the Guild</button>
+          <button class="btn-primary" id="joinBtn" style="align-self: flex-start; margin-top: 0.5rem;" onclick="submitJoinForm()">Join the Guild</button>
+        </div>
+        <div class="form-success" id="joinSuccess">
+          Welcome to the Guild! You'll hear from us soon.
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
     <div class="about-grid">
@@ -877,7 +557,6 @@ footer {
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div>
@@ -908,15 +587,86 @@ footer {
       <a href="mailto:nsmusiciansguild@gmail.com" style="margin-top: 0.3rem;">nsmusiciansguild@gmail.com</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    &copy; 2026 North Shore Musicians Guild. Built for the scene.
-  </div>
+  <div class="footer-bottom">&copy; 2026 North Shore Musicians Guild. Built for the scene.</div>
 </footer>
 
 <script>
+const SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+const MAX_FEATURED = 4;
+
+async function loadFeaturedEvents() {
+  const grid = document.getElementById('featuredGrid');
+  try {
+    const res = await fetch(SCRIPT_URL + '?action=getEvents');
+    const data = await res.json();
+    if (!data.success || !data.events.length) {
+      grid.innerHTML = '<p class="loading-msg">No events found. Check back soon!</p>';
+      return;
+    }
+    const events = data.events.slice(0, MAX_FEATURED);
+    grid.innerHTML = events.map(ev => `
+      <div class="feat-card">
+        ${ev.imageUrl ? `<img class="feat-card-img" src="${ev.imageUrl}" alt="${ev.eventName}">` : ''}
+        <div class="feat-card-body">
+          <div class="feat-when">${ev.date || ''}${ev.time ? ' \u00b7 ' + ev.time : ''}</div>
+          <div class="feat-name">${ev.eventName || ''}</div>
+          <div class="feat-venue">${ev.venue || ''}</div>
+          <div class="feat-address">${ev.address || ''}</div>
+          <div class="feat-desc">${ev.description || ''}</div>
+        </div>
+      </div>
+    `).join('');
+  } catch (err) {
+    grid.innerHTML = '<p class="loading-msg">Could not load events. Please try again later.</p>';
+    console.error('Error loading events:', err);
+  }
+}
+
+async function submitJoinForm() {
+  const btn = document.getElementById('joinBtn');
+  const firstName = document.getElementById('fname').value.trim();
+  const lastName = document.getElementById('lname').value.trim();
+  const email = document.getElementById('email').value.trim();
+
+  if (!firstName || !lastName || !email) {
+    alert('Please fill in your name and email.');
+    return;
+  }
+
+  const checkboxes = document.querySelectorAll('.form-checkboxes input:checked');
+  const types = Array.from(checkboxes).map(cb => cb.value).join(', ');
+  const interest = document.getElementById('interest').value;
+
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'joinGuild',
+        firstName, lastName, email,
+        type: types,
+        interest
+      })
+    });
+    document.getElementById('joinForm').style.display = 'none';
+    document.getElementById('joinSuccess').style.display = 'block';
+  } catch (err) {
+    alert('Something went wrong. Please try again.');
+    btn.disabled = false;
+    btn.textContent = 'Join the Guild';
+    console.error('Join error:', err);
+  }
+}
+
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
 });
+
+loadFeaturedEvents();
 </script>
 
 </body>
