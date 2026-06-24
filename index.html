@@ -601,6 +601,36 @@ const FALLBACK_EVENTS = [
   { eventName: 'Ordinary Madness', venue: 'Berry Tavern', address: '2 High St., Danvers', date: 'Wed Jul 23', time: 'TBA', description: 'Covers spanning five decades. Progressive rock gems and danceable rock and roll classics from the 70s through the 00s.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg?format=750w' }
 ];
 
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+function formatDate(val) {
+  if (!val) return '';
+  var s = val.toString();
+  if (s.toLowerCase().startsWith('every') || !s.includes('T')) return s;
+  try {
+    var d = new Date(s);
+    if (isNaN(d)) return s;
+    if (d.getFullYear() < 1900) return '';
+    return DAYS[d.getUTCDay()] + ' ' + MONTHS[d.getUTCMonth()] + ' ' + d.getUTCDate();
+  } catch(e) { return s; }
+}
+
+function formatTime(val) {
+  if (!val) return '';
+  var s = val.toString();
+  if (!s.includes('T')) return s;
+  try {
+    var d = new Date(s);
+    if (isNaN(d)) return s;
+    var h = d.getUTCHours();
+    var m = d.getUTCMinutes();
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return h + ':' + (m < 10 ? '0' : '') + m + ' ' + ampm;
+  } catch(e) { return s; }
+}
+
 async function loadFeaturedEvents() {
   const grid = document.getElementById('featuredGrid');
   let events = FALLBACK_EVENTS;
@@ -616,18 +646,21 @@ async function loadFeaturedEvents() {
     console.log('Using fallback events (API not configured)');
   }
   events = events.slice(0, MAX_FEATURED);
-    grid.innerHTML = events.map(ev => `
+    grid.innerHTML = events.map(ev => {
+      var dateStr = formatDate(ev.date);
+      var timeStr = formatTime(ev.time);
+      return `
       <div class="feat-card">
         ${ev.imageUrl ? `<img class="feat-card-img" src="${ev.imageUrl}" alt="${ev.eventName}">` : ''}
         <div class="feat-card-body">
-          <div class="feat-when">${ev.date || ''}${ev.time ? ' \u00b7 ' + ev.time : ''}</div>
+          <div class="feat-when">${dateStr}${timeStr ? ' \u00b7 ' + timeStr : ''}</div>
           <div class="feat-name">${ev.eventName || ''}</div>
           <div class="feat-venue">${ev.venue || ''}</div>
           <div class="feat-address">${ev.address || ''}</div>
           <div class="feat-desc">${ev.description || ''}</div>
         </div>
       </div>
-    `).join('');
+    `}).join('');
 }
 
 async function submitJoinForm() {
