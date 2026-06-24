@@ -645,7 +645,8 @@ async function loadFeaturedEvents() {
   } catch (err) {
     console.log('Using fallback events (API not configured)');
   }
-  events = events.slice(0, MAX_FEATURED);
+  events = events.filter(ev => ev.featured && ev.featured.toString().toLowerCase() === 'yes').slice(0, MAX_FEATURED);
+    if (!events.length) events = FALLBACK_EVENTS.slice(0, MAX_FEATURED);
     grid.innerHTML = events.map(ev => {
       var dateStr = formatDate(ev.date);
       var timeStr = formatTime(ev.time);
