@@ -29,6 +29,27 @@ function doGet(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 
+  if (action === 'getBands') {
+    var sheet = ss.getSheetByName('Bands');
+    var data = sheet.getDataRange().getValues();
+    var headers = data[0];
+    var bands = [];
+
+    for (var i = 1; i < data.length; i++) {
+      var row = {};
+      for (var j = 0; j < headers.length; j++) {
+        row[headers[j]] = data[i][j];
+      }
+      if (row.status && row.status.toString().toLowerCase() === 'approved') {
+        bands.push(row);
+      }
+    }
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ success: true, bands: bands }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
   return ContentService
     .createTextOutput(JSON.stringify({ success: false, error: 'Unknown action' }))
     .setMimeType(ContentService.MimeType.JSON);

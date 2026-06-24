@@ -433,46 +433,8 @@ footer {
     <div class="section-label">Guild Members</div>
     <h2 class="section-title">The Bands</h2>
     <p class="section-desc">The artists that make the North Shore scene what it is. Want your band featured? Join the Guild.</p>
-    <div class="members-grid">
-
-      <div class="member-card">
-        <img class="member-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/62dfc18d-198e-4498-bd6e-3b6b8d2c7901/OIP.webp?format=750w" alt="Bare Bones">
-        <div class="member-card-body">
-          <div class="member-name">Bare Bones</div>
-          <div class="member-genre">High Energy Rock / Covers</div>
-          <p class="member-bio">A 4-piece band with 4 lead vocalists, based on the North Shore. Bare Bones performs on a regular basis and plays a wide variety of highly recognizable covers and fan favorites. Available for any type of venue and private event.</p>
-          <div class="member-links">
-            <a href="https://www.facebook.com/BareBonesBoston/" target="_blank">Facebook</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <img class="member-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg?format=750w" alt="Ordinary Madness">
-        <div class="member-card-body">
-          <div class="member-name">Ordinary Madness</div>
-          <div class="member-genre">Progressive Rock / Classic Covers</div>
-          <p class="member-bio">A North Shore band playing covers spanning five decades -- from the iconic anthems to the hidden gems seldom heard by other cover bands. With over two decades of musical camaraderie, the members of Ordinary Madness share a bond as enduring as the songs they play. From progressive rock gems to danceable rock and roll classics of the 70s, 80s, 90s, and 00s, they're here to ignite your senses and take you on a musical journey like no other.</p>
-          <div class="member-links">
-            <a href="https://ordinary-madness.com/" target="_blank">Website</a>
-            <a href="https://www.facebook.com/OrdinaryMadnessMusic/" target="_blank">Facebook</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <img class="member-card-img" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/503b0b66-a219-48ab-9fc5-4fea96a4e99f/fred.webp?format=750w" alt="Fred Ellsworth">
-        <div class="member-card-body">
-          <div class="member-name">Fred Ellsworth</div>
-          <div class="member-genre">Country / Rock</div>
-          <p class="member-bio">A country artist from Westminster who will draw you in with his guitar and keep you with his soaring vocals. Equally at home with Haggard and Cash as with Petty and Skynyrd, Fred has spent years opening for the likes of Marshal Tucker, Leann Rimes, Tim McGraw, Faith Hill, Willie Nelson, and Brad Paisley, developing a contagious sense of ease and fun in front of any size crowd.</p>
-          <div class="member-links">
-            <a href="https://fredellsworth.com/" target="_blank">Website</a>
-            <a href="https://www.facebook.com/FredEllsworthMusic/" target="_blank">Facebook</a>
-          </div>
-        </div>
-      </div>
-
+    <div class="members-grid" id="membersGrid">
+      <p class="loading-msg">Loading bands...</p>
     </div>
   </div>
 </section>
@@ -591,7 +553,7 @@ footer {
 </footer>
 
 <script>
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbypXM7EOrvTGENmmTLUNkY2zcHCwhUrGGTJrsascGD1Ryo5WmLGVQx50uAs-29jDsoj/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxRJdTpJVYwsB-jGdiSE7u_I6Au3q3CpCD2Xu7J9saus0obQ_RSdqRDcTVzVxrB4W2L/exec';
 const MAX_FEATURED = 4;
 
 const FALLBACK_EVENTS = [
@@ -599,6 +561,12 @@ const FALLBACK_EVENTS = [
   { eventName: 'Fred Ellsworth', venue: 'Berry Tavern', address: '2 High St., Danvers', date: 'Every Tuesday', time: '7:00 PM', description: 'A weekly staple at the Berry Tavern, adding to the already inviting atmosphere of regulars and friendly staff. Great menu with exceptional pizza. Reservations are a safe bet.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/503b0b66-a219-48ab-9fc5-4fea96a4e99f/fred.webp?format=750w' },
   { eventName: 'Bare Bones', venue: 'The Deck', address: '179 Bridge St., Salisbury', date: 'Fri Jun 26', time: '6:00 PM', description: 'High energy rock to keep you moving, whether you\'re burning off dinner from the restaurant downstairs or stopping in for a drink with an amazing view.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/62dfc18d-198e-4498-bd6e-3b6b8d2c7901/OIP.webp?format=750w' },
   { eventName: 'Ordinary Madness', venue: 'Berry Tavern', address: '2 High St., Danvers', date: 'Wed Jul 23', time: 'TBA', description: 'Covers spanning five decades. Progressive rock gems and danceable rock and roll classics from the 70s through the 00s.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg?format=750w' }
+];
+
+const FALLBACK_BANDS = [
+  { bandName: 'Bare Bones', genre: 'High Energy Rock / Covers', bio: 'A 4-piece band with 4 lead vocalists, based on the North Shore. Bare Bones performs on a regular basis and plays a wide variety of highly recognizable covers and fan favorites. Available for any type of venue and private event.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/62dfc18d-198e-4498-bd6e-3b6b8d2c7901/OIP.webp?format=750w', facebookUrl: 'https://www.facebook.com/BareBonesBoston/' },
+  { bandName: 'Ordinary Madness', genre: 'Progressive Rock / Classic Covers', bio: 'A North Shore band playing covers spanning five decades -- from the iconic anthems to the hidden gems seldom heard by other cover bands. With over two decades of musical camaraderie, the members of Ordinary Madness share a bond as enduring as the songs they play. From progressive rock gems to danceable rock and roll classics of the 70s, 80s, 90s, and 00s.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg?format=750w', websiteUrl: 'https://ordinary-madness.com/', facebookUrl: 'https://www.facebook.com/OrdinaryMadnessMusic/' },
+  { bandName: 'Fred Ellsworth', genre: 'Country / Rock', bio: 'A country artist from Westminster who will draw you in with his guitar and keep you with his soaring vocals. Equally at home with Haggard and Cash as with Petty and Skynyrd, Fred has spent years opening for the likes of Marshal Tucker, Leann Rimes, Tim McGraw, Faith Hill, Willie Nelson, and Brad Paisley.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/503b0b66-a219-48ab-9fc5-4fea96a4e99f/fred.webp?format=750w', websiteUrl: 'https://fredellsworth.com/', facebookUrl: 'https://www.facebook.com/FredEllsworthMusic/' }
 ];
 
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -704,11 +672,44 @@ async function submitJoinForm() {
   }
 }
 
+async function loadBands() {
+  const grid = document.getElementById('membersGrid');
+  let bands = FALLBACK_BANDS;
+  try {
+    if (SCRIPT_URL && !SCRIPT_URL.includes('YOUR_APPS_SCRIPT')) {
+      const res = await fetch(SCRIPT_URL + '?action=getBands');
+      const data = await res.json();
+      if (data.success && data.bands.length) {
+        bands = data.bands;
+      }
+    }
+  } catch (err) {
+    console.log('Using fallback bands (API not configured or Bands tab missing)');
+  }
+  grid.innerHTML = bands.map(b => {
+    var links = '';
+    if (b.websiteUrl) links += `<a href="${b.websiteUrl}" target="_blank">Website</a>`;
+    if (b.facebookUrl) links += `<a href="${b.facebookUrl}" target="_blank">Facebook</a>`;
+    return `
+      <div class="member-card">
+        ${b.imageUrl ? `<img class="member-card-img" src="${b.imageUrl}" alt="${b.bandName}">` : ''}
+        <div class="member-card-body">
+          <div class="member-name">${b.bandName || ''}</div>
+          <div class="member-genre">${b.genre || ''}</div>
+          <p class="member-bio">${b.bio || ''}</p>
+          ${links ? `<div class="member-links">${links}</div>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
 });
 
 loadFeaturedEvents();
+loadBands();
 </script>
 
 </body>
