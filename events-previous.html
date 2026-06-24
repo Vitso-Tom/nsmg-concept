@@ -72,7 +72,7 @@ nav {
   color: var(--cream); font-size: 1.5rem; cursor: pointer;
 }
 
-.page-header { padding: 8rem 2rem 2rem; max-width: 1100px; margin: 0 auto; }
+.page-header { padding: 8rem 2rem 3rem; max-width: 1100px; margin: 0 auto; }
 
 .page-header h1 {
   font-family: var(--font-display);
@@ -82,96 +82,7 @@ nav {
 
 .page-header p { font-size: 1.05rem; color: var(--muted); max-width: 560px; }
 
-/* ---- CALENDAR ---- */
-.calendar-section {
-  max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 1rem;
-}
-
-.cal-header {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 1.2rem;
-}
-
-.cal-header h2 {
-  font-family: var(--font-display); font-size: 1.3rem; font-weight: 600;
-  color: var(--gold);
-}
-
-.cal-nav {
-  display: flex; gap: 0.5rem;
-}
-
-.cal-nav button {
-  background: var(--card); border: 1px solid var(--divider); border-radius: 4px;
-  color: var(--cream); font-size: 1rem; padding: 0.4rem 0.8rem;
-  cursor: pointer; transition: border-color 0.2s, background 0.2s;
-}
-
-.cal-nav button:hover { border-color: var(--gold); background: var(--slate); }
-
-.cal-grid {
-  display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px;
-}
-
-.cal-day-header {
-  text-align: center; font-size: 0.7rem; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.1em;
-  color: var(--muted); padding: 0.5rem 0;
-}
-
-.cal-day {
-  background: var(--card); border: 1px solid transparent;
-  border-radius: 4px; min-height: 52px; padding: 0.4rem;
-  text-align: center; cursor: default; position: relative;
-  transition: border-color 0.2s, background 0.2s;
-}
-
-.cal-day.empty { background: transparent; }
-
-.cal-day.has-event { cursor: pointer; }
-.cal-day.has-event:hover { border-color: var(--gold); background: var(--slate); }
-
-.cal-day.selected { border-color: var(--gold); background: rgba(212, 168, 83, 0.12); }
-
-.cal-day.today { border-color: var(--copper); }
-
-.cal-day-num {
-  font-size: 0.85rem; font-weight: 500; color: var(--cream);
-}
-
-.cal-day.empty .cal-day-num { color: transparent; }
-
-.cal-dots {
-  display: flex; gap: 3px; justify-content: center; margin-top: 4px; flex-wrap: wrap;
-}
-
-.cal-dot {
-  width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
-}
-
-.cal-dot.recurring { background: var(--copper); }
-
-.cal-filter-bar {
-  max-width: 1100px; margin: 0 auto; padding: 0.8rem 2rem;
-  display: none; align-items: center; gap: 1rem;
-}
-
-.cal-filter-bar.active { display: flex; }
-
-.cal-filter-text {
-  font-size: 0.85rem; color: var(--gold);
-}
-
-.cal-filter-clear {
-  font-size: 0.78rem; font-weight: 500; color: var(--muted);
-  background: none; border: 1px solid var(--divider); border-radius: 3px;
-  padding: 0.3rem 0.7rem; cursor: pointer; transition: color 0.2s, border-color 0.2s;
-}
-
-.cal-filter-clear:hover { color: var(--gold); border-color: var(--gold); }
-
-/* ---- EVENTS LIST ---- */
-.events-section { padding: 1rem 2rem 4rem; }
+.events-section { padding: 0 2rem 4rem; }
 
 .events-list {
   max-width: 1100px; margin: 0 auto;
@@ -238,11 +149,6 @@ nav {
   font-size: 0.9rem; color: var(--muted); font-style: italic; padding: 2rem 0;
 }
 
-.no-events-msg {
-  font-size: 0.9rem; color: var(--muted); padding: 2rem 0; text-align: center;
-}
-
-/* ---- SUBMIT FORM ---- */
 .submit-section {
   max-width: 1100px; margin: 0 auto; padding: 3rem 2rem;
   border-top: 1px solid var(--divider);
@@ -258,7 +164,8 @@ nav {
 }
 
 .submit-form {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; max-width: 700px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+  max-width: 700px;
 }
 
 .submit-form .full { grid-column: 1 / -1; }
@@ -276,6 +183,7 @@ nav {
 }
 
 .submit-form textarea { min-height: 100px; resize: vertical; }
+
 .submit-form input:focus, .submit-form textarea:focus { border-color: var(--gold); }
 
 .btn-primary {
@@ -311,8 +219,6 @@ footer a { color: var(--gold); text-decoration: none; }
     background: rgba(17, 24, 39, 0.98);
     padding: 1.5rem 2rem; border-bottom: 1px solid var(--divider); gap: 1rem;
   }
-  .cal-day { min-height: 44px; }
-  .cal-day-num { font-size: 0.75rem; }
   .event-row { grid-template-columns: 1fr; }
   .event-img, .event-img-placeholder { height: 180px; min-height: auto; }
   .event-date-block {
@@ -342,38 +248,19 @@ footer a { color: var(--gold); text-decoration: none; }
 
 <div class="page-header">
   <h1>Events</h1>
-  <p>Live music across the North Shore. Click a date to see what's playing.</p>
+  <p>Live music across the North Shore. Recurring shows, one-off gigs, open mics, and everything in between.</p>
 </div>
 
-<!-- CALENDAR -->
-<div class="calendar-section">
-  <div class="cal-header">
-    <h2 id="calMonthLabel"></h2>
-    <div class="cal-nav">
-      <button onclick="changeMonth(-1)">&larr;</button>
-      <button onclick="changeMonth(0)">Today</button>
-      <button onclick="changeMonth(1)">&rarr;</button>
-    </div>
-  </div>
-  <div class="cal-grid" id="calGrid"></div>
-</div>
-
-<div class="cal-filter-bar" id="calFilterBar">
-  <span class="cal-filter-text" id="calFilterText"></span>
-  <button class="cal-filter-clear" onclick="clearFilter()">Show All</button>
-</div>
-
-<!-- EVENTS LIST -->
 <div class="events-section">
   <div class="events-list" id="eventsList">
     <p class="loading-msg">Loading events...</p>
   </div>
 </div>
 
-<!-- SUBMIT -->
 <div class="submit-section" id="submit">
   <h2>Have a Show Coming Up?</h2>
   <p>Listing events is free and open to any North Shore venue or artist. Submit your show and we'll get it on the calendar after a quick review.</p>
+
   <div class="submit-form" id="submitForm">
     <div>
       <label for="evName">Event Name</label>
@@ -421,7 +308,7 @@ footer a { color: var(--gold); text-decoration: none; }
 </footer>
 
 <script>
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyUfeIwbjBsvjoYD6F_eT_U7KKlvTHBpSxBy7glnHDZm7JRHn6-Jy8EJYWVYiqhaDi6/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxRJdTpJVYwsB-jGdiSE7u_I6Au3q3CpCD2Xu7J9saus0obQ_RSdqRDcTVzVxrB4W2L/exec';
 
 const FALLBACK_EVENTS = [
   { eventName: 'Open Mic Night', venue: "Hugh O'Neill's", address: '45 Pleasant St., Malden', date: 'Every Wednesday', time: '8:30 PM', description: 'A talented network of local singer/songwriters and musicians performing short sets. Hosted by Jeff Munro. Sign-ups begin at 8:00 PM.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/1782071298911-BN52U4SQKVCSPBYFMBT2/unsplash-image-2UuhMZEChdc.jpg?format=750w' },
@@ -430,43 +317,30 @@ const FALLBACK_EVENTS = [
   { eventName: 'Ordinary Madness', venue: 'Berry Tavern', address: '2 High St., Danvers', date: 'Wed Jul 23', time: 'TBA', description: 'Covers spanning five decades. Progressive rock gems and danceable rock and roll classics from the 70s through the 00s.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg?format=750w' }
 ];
 
-const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const MONTH_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const DAY_NAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-const DAY_MAP = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6,
-  sunday: 0, monday: 1, tuesday: 2, wednesday: 3, thursday: 4, friday: 5, saturday: 6 };
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
-const MONTH_FULL = ['january','february','march','april','may','june','july','august','september','october','november','december'];
-
-function parseMonthName(name) {
-  var lower = name.toLowerCase();
-  var idx = MONTH_FULL.indexOf(lower);
-  if (idx >= 0) return idx;
-  idx = MONTH_SHORT.map(function(m) { return m.toLowerCase(); }).indexOf(lower);
-  return idx;
-}
-
-let allEvents = [];
-let calYear, calMonth;
-let selectedDate = null;
-
-// ---- DATE/TIME FORMATTING ----
 function formatDate(val) {
   if (!val) return '';
   var s = val.toString();
-  if (s.toLowerCase().startsWith('every') || !/\d{4}-\d{2}-\d{2}T/.test(s)) return s;
+  // Already friendly text
+  if (s.toLowerCase().startsWith('every') || !s.includes('T')) return s;
+  // ISO date from Sheets
   try {
     var d = new Date(s);
     if (isNaN(d)) return s;
+    // Sheets time-only values use 1899 epoch -- ignore these
     if (d.getFullYear() < 1900) return '';
-    return DAY_NAMES[d.getUTCDay()] + ' ' + MONTH_SHORT[d.getUTCMonth()] + ' ' + d.getUTCDate();
+    return DAYS[d.getUTCDay()] + ' ' + MONTHS[d.getUTCMonth()] + ' ' + d.getUTCDate();
   } catch(e) { return s; }
 }
 
 function formatTime(val) {
   if (!val) return '';
   var s = val.toString();
-  if (!/\d{4}-\d{2}-\d{2}T/.test(s)) return s;
+  // Already friendly text like "8:30 PM"
+  if (!s.includes('T')) return s;
+  // ISO time from Sheets (1899 epoch or otherwise)
   try {
     var d = new Date(s);
     if (isNaN(d)) return s;
@@ -478,239 +352,73 @@ function formatTime(val) {
   } catch(e) { return s; }
 }
 
-// ---- PARSE EVENT TO CALENDAR DATES ----
-function getEventDatesInMonth(ev, year, month) {
-  var dates = [];
-  var dateStr = formatDate(ev.date);
-
-  // Recurring: "Every Wednesday", "Every Tuesday"
-  var recurMatch = dateStr.match(/every\s+(\w+)/i);
-  if (recurMatch) {
-    var dayName = recurMatch[1].toLowerCase();
-    var targetDay = DAY_MAP[dayName];
-    if (targetDay !== undefined) {
-      var d = new Date(year, month, 1);
-      while (d.getMonth() === month) {
-        if (d.getDay() === targetDay) {
-          dates.push({ day: d.getDate(), recurring: true });
-        }
-        d.setDate(d.getDate() + 1);
-      }
-    }
-    return dates;
-  }
-
-  // One-off: try to parse "Fri Jun 26" or ISO date
-  var raw = ev.date ? ev.date.toString() : '';
-  var parsed = null;
-
-  // ISO date (contains T between digits, like 2026-06-26T04:00:00.000Z)
-  if (/\d{4}-\d{2}-\d{2}T/.test(raw)) {
-    try {
-      var dt = new Date(raw);
-      if (!isNaN(dt) && dt.getFullYear() > 1900) {
-        parsed = { y: dt.getUTCFullYear(), m: dt.getUTCMonth(), d: dt.getUTCDate() };
-      }
-    } catch(e) {}
-  }
-
-  // "Fri Jun 26" or "Wed Jul 23"
-  if (!parsed) {
-    var parts = dateStr.match(/(\w+)\s+(\w+)\s+(\d+)/);
-    if (parts) {
-      var mi = parseMonthName(parts[2]);
-      if (mi >= 0) {
-        parsed = { y: year, m: mi, d: parseInt(parts[3]) };
-      }
-    }
-  }
-
-  if (parsed && parsed.y === year && parsed.m === month) {
-    dates.push({ day: parsed.d, recurring: false });
-  }
-
-  return dates;
-}
-
-// ---- CALENDAR RENDERING ----
-function renderCalendar() {
-  var grid = document.getElementById('calGrid');
-  var label = document.getElementById('calMonthLabel');
-  label.textContent = MONTH_NAMES[calMonth] + ' ' + calYear;
-
-  var firstDay = new Date(calYear, calMonth, 1).getDay();
-  var daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
-  var today = new Date();
-
-  // Build event map: day -> [{event, recurring}]
-  var eventMap = {};
-  allEvents.forEach(function(ev) {
-    var dates = getEventDatesInMonth(ev, calYear, calMonth);
-    dates.forEach(function(d) {
-      if (!eventMap[d.day]) eventMap[d.day] = [];
-      eventMap[d.day].push({ event: ev, recurring: d.recurring });
-    });
-  });
-
-  var html = '';
-  // Day headers
-  DAY_NAMES.forEach(function(d) {
-    html += '<div class="cal-day-header">' + d + '</div>';
-  });
-
-  // Empty cells before first day
-  for (var i = 0; i < firstDay; i++) {
-    html += '<div class="cal-day empty"><span class="cal-day-num"></span></div>';
-  }
-
-  // Day cells
-  for (var d = 1; d <= daysInMonth; d++) {
-    var hasEvents = eventMap[d] && eventMap[d].length > 0;
-    var isToday = (today.getFullYear() === calYear && today.getMonth() === calMonth && today.getDate() === d);
-    var isSelected = (selectedDate && selectedDate.year === calYear && selectedDate.month === calMonth && selectedDate.day === d);
-
-    var classes = 'cal-day';
-    if (hasEvents) classes += ' has-event';
-    if (isToday) classes += ' today';
-    if (isSelected) classes += ' selected';
-
-    var dots = '';
-    if (hasEvents) {
-      dots = '<div class="cal-dots">';
-      var count = Math.min(eventMap[d].length, 4);
-      for (var j = 0; j < count; j++) {
-        dots += '<div class="cal-dot' + (eventMap[d][j].recurring ? ' recurring' : '') + '"></div>';
-      }
-      dots += '</div>';
-    }
-
-    var onclick = hasEvents ? ' onclick="selectDay(' + d + ')"' : '';
-    html += '<div class="' + classes + '"' + onclick + '><span class="cal-day-num">' + d + '</span>' + dots + '</div>';
-  }
-
-  grid.innerHTML = html;
-}
-
-function changeMonth(delta) {
-  if (delta === 0) {
-    var t = new Date();
-    calYear = t.getFullYear();
-    calMonth = t.getMonth();
-    selectedDate = null;
-  } else {
-    calMonth += delta;
-    if (calMonth > 11) { calMonth = 0; calYear++; }
-    if (calMonth < 0) { calMonth = 11; calYear--; }
-  }
-  renderCalendar();
-  if (delta === 0) { clearFilter(); } else { renderFilteredEvents(); }
-}
-
-function selectDay(day) {
-  selectedDate = { year: calYear, month: calMonth, day: day };
-  renderCalendar();
-  renderFilteredEvents();
-
-  var bar = document.getElementById('calFilterBar');
-  var text = document.getElementById('calFilterText');
-  bar.classList.add('active');
-  text.textContent = 'Showing events for ' + MONTH_NAMES[calMonth] + ' ' + day + ', ' + calYear;
-
-  document.getElementById('eventsList').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function clearFilter() {
-  selectedDate = null;
-  document.getElementById('calFilterBar').classList.remove('active');
-  renderCalendar();
-  renderEventsList(allEvents);
-}
-
-// ---- CHECK IF EVENT MATCHES SELECTED DATE ----
-function eventMatchesDate(ev, year, month, day) {
-  var dates = getEventDatesInMonth(ev, year, month);
-  return dates.some(function(d) { return d.day === day; });
-}
-
-function renderFilteredEvents() {
-  if (!selectedDate) {
-    renderEventsList(allEvents);
-    return;
-  }
-  var filtered = allEvents.filter(function(ev) {
-    return eventMatchesDate(ev, selectedDate.year, selectedDate.month, selectedDate.day);
-  });
-  if (filtered.length === 0) {
-    document.getElementById('eventsList').innerHTML = '<p class="no-events-msg">No events on this date. <a href="#" onclick="clearFilter(); return false;" style="color: var(--gold);">Show all events</a></p>';
-  } else {
-    renderEventsList(filtered);
-  }
-}
-
-// ---- RENDER EVENTS LIST ----
-function renderEventsList(events) {
-  var list = document.getElementById('eventsList');
-  list.innerHTML = events.map(function(ev) {
-    var dateStr = formatDate(ev.date);
-    var timeStr = formatTime(ev.time);
-    var dateBlock = '';
-    var isRecurring = dateStr.toLowerCase().startsWith('every');
-
-    if (isRecurring) {
-      var dayMatch = dateStr.match(/every\s+(\w+)/i);
-      var dayAbbrev = dayMatch ? dayMatch[1].substring(0, 3) : dateStr;
-      dateBlock = '<div class="event-date-block"><div class="recur">Weekly</div><div class="day">' + dayAbbrev + '</div></div>';
-    } else {
-      var parts = dateStr.match(/(\w+)\s+(\w+)\s+(\d+)/);
-      if (parts) {
-        dateBlock = '<div class="event-date-block"><div class="day">' + parts[3] + '</div><div class="month">' + parts[2] + '</div></div>';
-      } else {
-        dateBlock = '<div class="event-date-block"><div class="recur">' + dateStr + '</div></div>';
-      }
-    }
-
-    var imgBlock = ev.imageUrl
-      ? '<img class="event-img" src="' + ev.imageUrl + '" alt="' + (ev.eventName || '') + '">'
-      : '<div class="event-img-placeholder">No Image</div>';
-
-    return '<div class="event-row">' + imgBlock + dateBlock +
-      '<div class="event-details">' +
-      '<h3>' + (ev.eventName || '') + '</h3>' +
-      '<div class="venue">' + (ev.venue || '') + '</div>' +
-      '<div class="address">' + (ev.address || '') + '</div>' +
-      '<p class="desc">' + (ev.description || '') + '</p>' +
-      '<span class="time">' + dateStr + (timeStr ? ' \u00b7 ' + timeStr : '') + '</span>' +
-      '</div></div>';
-  }).join('');
-}
-
-// ---- LOAD EVENTS ----
 async function loadEvents() {
-  allEvents = FALLBACK_EVENTS;
+  const list = document.getElementById('eventsList');
+  let events = FALLBACK_EVENTS;
   try {
     if (SCRIPT_URL && !SCRIPT_URL.includes('YOUR_APPS_SCRIPT')) {
-      var res = await fetch(SCRIPT_URL + '?action=getEvents');
-      var data = await res.json();
+      const res = await fetch(SCRIPT_URL + '?action=getEvents');
+      const data = await res.json();
       if (data.success && data.events.length) {
-        allEvents = data.events;
+        events = data.events;
       }
     }
   } catch (err) {
-    console.log('Using fallback events');
+    console.log('Using fallback events (API not configured)');
   }
+    list.innerHTML = events.map(ev => {
+      var dateStr = formatDate(ev.date);
+      var timeStr = formatTime(ev.time);
+      var dateBlock = '';
+      var isRecurring = dateStr.toLowerCase().startsWith('every');
 
-  var now = new Date();
-  calYear = now.getFullYear();
-  calMonth = now.getMonth();
-  renderCalendar();
-  renderEventsList(allEvents);
+      if (isRecurring) {
+        var dayMatch = dateStr.match(/every\s+(\w+)/i);
+        var dayAbbrev = dayMatch ? dayMatch[1].substring(0, 3) : dateStr;
+        dateBlock = `
+          <div class="event-date-block">
+            <div class="recur">Weekly</div>
+            <div class="day">${dayAbbrev}</div>
+          </div>`;
+      } else {
+        var parts = dateStr.match(/(\w+)\s+(\w+)\s+(\d+)/);
+        if (parts) {
+          dateBlock = `
+            <div class="event-date-block">
+              <div class="day">${parts[3]}</div>
+              <div class="month">${parts[2]}</div>
+            </div>`;
+        } else {
+          dateBlock = `
+            <div class="event-date-block">
+              <div class="recur">${dateStr}</div>
+            </div>`;
+        }
+      }
+
+      var imgBlock = ev.imageUrl
+        ? `<img class="event-img" src="${ev.imageUrl}" alt="${ev.eventName}">`
+        : `<div class="event-img-placeholder">No Image</div>`;
+
+      return `
+        <div class="event-row">
+          ${imgBlock}
+          ${dateBlock}
+          <div class="event-details">
+            <h3>${ev.eventName || ''}</h3>
+            <div class="venue">${ev.venue || ''}</div>
+            <div class="address">${ev.address || ''}</div>
+            <p class="desc">${ev.description || ''}</p>
+            <span class="time">${dateStr}${timeStr ? ' \u00b7 ' + timeStr : ''}</span>
+          </div>
+        </div>`;
+    }).join('');
 }
 
-// ---- SUBMIT EVENT ----
 async function submitEvent() {
-  var btn = document.getElementById('submitBtn');
-  var name = document.getElementById('evName').value.trim();
-  var email = document.getElementById('evEmail').value.trim();
+  const btn = document.getElementById('submitBtn');
+  const name = document.getElementById('evName').value.trim();
+  const email = document.getElementById('evEmail').value.trim();
 
   if (!name || !email) {
     alert('Please provide at least an event name and your email.');
@@ -743,12 +451,12 @@ async function submitEvent() {
     alert('Something went wrong. Please try again.');
     btn.disabled = false;
     btn.textContent = 'Submit Event';
+    console.error('Submit error:', err);
   }
 }
 
-// ---- INIT ----
-document.querySelectorAll('.nav-links a').forEach(function(link) {
-  link.addEventListener('click', function() { document.querySelector('.nav-links').classList.remove('open'); });
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
 });
 
 loadEvents();

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>North Shore Musicians Guild (Original)</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: #4a6274;
+  color: #2b2b2b;
+  line-height: 1.6;
+}
+
+/* Nav */
+nav {
+  background: #3d5466;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+nav a {
+  color: #e8dcc8;
+  text-decoration: none;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-brand {
+  font-style: italic;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 5rem 2rem 3rem;
+  background: #4a6274;
+}
+
+.hero h1 {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 3rem;
+  color: #f5deb3;
+  font-weight: normal;
+  margin-bottom: 0.8rem;
+}
+
+.hero .subtitle {
+  font-size: 0.9rem;
+  color: #c8bfb0;
+  margin-bottom: 2rem;
+}
+
+.hero .tagline {
+  font-size: 1.3rem;
+  color: #c8bfb0;
+  margin-bottom: 2rem;
+}
+
+/* Join section */
+.join-section {
+  background: #4a6274;
+  padding: 3rem 2rem;
+}
+
+.join-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.logo-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-area img {
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255,255,255,0.1);
+}
+
+.join-form-area h2 {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 2.2rem;
+  color: #f5deb3;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #e8dcc8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.form-sublabel {
+  font-size: 0.65rem;
+  color: #999;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  background: transparent;
+  border: 1px solid #7a8e9e;
+  border-radius: 0;
+  color: #e8dcc8;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  font-family: Georgia, serif;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.checkbox-row {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.checkbox-row label {
+  font-size: 0.7rem;
+  color: #e8dcc8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.form-select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  background: transparent;
+  border: 1px solid #7a8e9e;
+  color: #999;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  font-family: Georgia, serif;
+}
+
+.submit-btn {
+  background: transparent;
+  border: 1px solid #e8dcc8;
+  color: #e8dcc8;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  font-family: Georgia, serif;
+}
+
+/* Community section */
+.community-section {
+  background: #f5f0e8;
+  padding: 4rem 2rem;
+}
+
+.community-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.community-img img {
+  width: 100%;
+  border-radius: 0;
+}
+
+.community-text h2 {
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  color: #2b2b2b;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.community-text p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.7;
+}
+
+/* Coming Soon */
+.coming-soon {
+  background: #4a6274;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.coming-soon h3 {
+  font-size: 1rem;
+  color: #c8bfb0;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.coming-soon-logo {
+  width: 200px;
+  margin: 0 auto 2rem;
+  display: block;
+}
+
+.coming-soon-list {
+  list-style: none;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.coming-soon-list li {
+  font-style: italic;
+  font-weight: bold;
+  color: #c8bfb0;
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Events */
+.events-section {
+  background: #f5f0e8;
+  padding: 4rem 2rem;
+}
+
+.events-section h2 {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 2rem;
+  color: #2b3d4f;
+  text-align: left;
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+  font-weight: bold;
+}
+
+.events-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.event-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.event-card h3 {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #2b3d4f;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
+.event-card .address {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2b2b2b;
+  margin-bottom: 1rem;
+}
+
+.event-card .desc {
+  font-size: 0.78rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+
+.event-card .schedule {
+  font-size: 0.78rem;
+  font-weight: bold;
+  color: #2b2b2b;
+}
+
+/* Footer */
+footer {
+  background: #3d5466;
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #e8dcc8;
+  margin-bottom: 0.5rem;
+}
+
+.footer-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #999;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.footer-info {
+  font-size: 0.85rem;
+  color: #c8bfb0;
+}
+
+.footer-info a {
+  color: #c8bfb0;
+  text-decoration: none;
+}
+
+.footer-squarespace {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.footer-squarespace a {
+  color: #999;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .join-grid { grid-template-columns: 1fr; }
+  .community-inner { grid-template-columns: 1fr; }
+  .events-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">North Shore Musicians Guild</a>
+  <ul class="nav-links">
+    <li><a href="#">Events</a></li>
+    <li><a href="#">NSMG Community Updates</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1>Supporting North Shore Live Music</h1>
+  <p class="subtitle">Connecting fans, bands, musicians, and venues across Boston's North Shore</p>
+  <p class="tagline">Uniting the North Shore Music Community</p>
+</section>
+
+<section class="join-section">
+  <div class="join-grid">
+    <div class="logo-area">
+      <img src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/6853cd7a-9756-4c65-aac0-d9947dd8b084/NSMG+Logo.png" alt="NSMG Logo">
+    </div>
+    <div class="join-form-area">
+      <h2>Join The Guild</h2>
+      <span class="form-label">Name</span>
+      <div class="form-row">
+        <div>
+          <span class="form-sublabel">First Name (required)</span>
+          <input type="text" class="form-input">
+        </div>
+        <div>
+          <span class="form-sublabel">Last Name (required)</span>
+          <input type="text" class="form-input">
+        </div>
+      </div>
+      <span class="form-label">Email <span style="font-weight:normal;text-transform:none;">(required)</span></span>
+      <input type="email" class="form-input">
+      <div class="checkbox-row">
+        <label><input type="checkbox"> Sign up for news and updates</label>
+      </div>
+      <span class="form-label">How do you participate in the North Shore music community? <span style="font-weight:normal;text-transform:none;">(required)</span></span>
+      <div class="checkbox-row">
+        <label><input type="checkbox"> Musician</label>
+        <label><input type="checkbox"> Fan</label>
+        <label><input type="checkbox"> Venue Representative</label>
+      </div>
+      <span class="form-label" style="color: #d4a853;">What Interests You Most? <span style="font-weight:normal;text-transform:none;">(required)</span></span>
+      <select class="form-select"><option>Select an option</option></select>
+      <br>
+      <button class="submit-btn">Submit</button>
+    </div>
+  </div>
+</section>
+
+<section class="community-section">
+  <div class="community-inner">
+    <div class="community-img">
+      <img src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg?format=750w" alt="North Shore music">
+    </div>
+    <div class="community-text">
+      <h2>Building Community Note by Note</h2>
+      <p>North Shore Musicians Guild is a community-driven initiative focused on supporting local musicians, their fans, and the venues that host live music. By creating connections, sharing insight, and promoting collaboration, the Guild aims to strengthen the North Shore live music scene and foster a vibrant local music culture.</p>
+    </div>
+  </div>
+</section>
+
+<section class="coming-soon">
+  <h3>Coming Soon</h3>
+  <img class="coming-soon-logo" src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/cf034719-ae43-4865-b792-583e3b346893/I%27m+with+the+band+logo+design_50.png" alt="I'm with the band">
+  <ul class="coming-soon-list">
+    <li>Data Analytics/Audience Insights</li>
+    <li>Band Spotlights</li>
+    <li>Venue Spotlights</li>
+    <li>Community-Driven music initiatives</li>
+    <li>Local Musician Resources</li>
+    <li>Guild Merchandise</li>
+    <li>Future Community Hub</li>
+  </ul>
+</section>
+
+<section class="events-section">
+  <h2>Featured Upcoming Events</h2>
+  <div class="events-grid">
+
+    <div class="event-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/1782071298911-BN52U4SQKVCSPBYFMBT2/unsplash-image-2UuhMZEChdc.jpg?format=750w" alt="Open Mic Night">
+      <h3>Open Mic Night @ Hugh O'Neill's</h3>
+      <p class="address">45 Pleasant St., Malden</p>
+      <p class="desc">Open Mic Night showcases a talented network of local singer/songwriters and musicians performing short sets. Hosted by Jeff Munro.</p>
+      <p class="schedule">Every Wednesday night, starting at 8:30pm (Sign-Ups begin at 8:00pm)</p>
+    </div>
+
+    <div class="event-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/503b0b66-a219-48ab-9fc5-4fea96a4e99f/fred.webp?format=750w" alt="Fred Ellsworth">
+      <h3>Fred Ellsworth @ Berry Tavern</h3>
+      <p class="address">2 High St., Danvers</p>
+      <p class="desc">Fred Ellsworth is a weekly staple at The Berry Tavern & adds to the already inviting atmosphere of regulars and friendly staff. Great menu with exceptional pizza!</p>
+      <p class="schedule">Every Tuesday night starting at 7:00pm (reservations are a safe bet)</p>
+    </div>
+
+    <div class="event-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/62dfc18d-198e-4498-bd6e-3b6b8d2c7901/OIP.webp?format=750w" alt="Bare Bones">
+      <h3>Bare Bones @ The Deck</h3>
+      <p class="address">179 Bridge St., Salisbury</p>
+      <p class="desc">Bare Bones returns to The Deck for another great night of high energy rock to keep you moving whether you are burning off your dinner from the restaurant downstairs or stopping in for a drink with an amazing view.</p>
+      <p class="schedule">Friday, June 26th starting at 6pm</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">North Shore Musicians Guild</div>
+    <div class="footer-label">Location</div>
+    <div class="footer-info">Danvers, MA 01923</div>
+    <div class="footer-label">Contact</div>
+    <div class="footer-info"><a href="mailto:nsmusiciansguild@gmail.com">nsmusiciansguild@gmail.com</a></div>
+    <div class="footer-squarespace">Made with <a href="https://squarespace.com">Squarespace</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
