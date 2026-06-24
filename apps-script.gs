@@ -80,6 +80,7 @@ function doPost(e) {
       data.email || '',
       data.type || '',
       data.interest || '',
+      data.newsletter || '',
       timestamp
     ]);
 
