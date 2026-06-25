@@ -84,6 +84,15 @@ function doPost(e) {
       timestamp
     ]);
 
+    // Notify John
+    MailApp.sendEmail('thomas.smolinsky@gmail.com, tom@vitsotech.com',
+      'New Guild Member: ' + (data.firstName || '') + ' ' + (data.lastName || ''),
+      'Email: ' + (data.email || '') +
+      '\nType: ' + (data.type || '') +
+      '\nInterest: ' + (data.interest || '') +
+      '\nNewsletter: ' + (data.newsletter || '') +
+      '\n\nView all members in your NSMG sheet.');
+
     return ContentService
       .createTextOutput(JSON.stringify({ success: true, message: 'Welcome to the Guild!' }))
       .setMimeType(ContentService.MimeType.JSON);
@@ -101,9 +110,22 @@ function doPost(e) {
       data.date || '',
       data.time || '',
       data.description || '',
-      '',
-      timestamp
+      data.imageUrl || '',
+      timestamp,
+      data.submitterEmail || ''
     ]);
+
+    // Notify John
+    MailApp.sendEmail('thomas.smolinsky@gmail.com, tom@vitsotech.com',
+      'New Event Submission: ' + (data.eventName || ''),
+      'Band/Artist: ' + (data.bandArtist || '') +
+      '\nVenue: ' + (data.venue || '') +
+      '\nAddress: ' + (data.address || '') +
+      '\nDate: ' + (data.date || '') +
+      '\nTime: ' + (data.time || '') +
+      '\nDescription: ' + (data.description || '') +
+      '\nSubmitter: ' + (data.submitterEmail || '') +
+      '\n\nReview and approve it in your NSMG sheet.');
 
     return ContentService
       .createTextOutput(JSON.stringify({ success: true, message: 'Event submitted for review!' }))

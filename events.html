@@ -392,8 +392,27 @@ footer a { color: var(--gold); text-decoration: none; }
       <input type="text" id="evAddress" placeholder="e.g. 123 Main St., Salem">
     </div>
     <div>
+      <label for="evDateType">Event Type</label>
+      <select id="evDateType" style="width:100%;padding:0.7rem 0.9rem;background:var(--card);border:1px solid rgba(139,155,180,0.2);border-radius:4px;color:var(--cream);font-family:var(--font-body);font-size:0.95rem;cursor:pointer;" onchange="toggleDateInput()">
+        <option value="oneoff">One-time event</option>
+        <option value="recurring">Recurring weekly</option>
+      </select>
+    </div>
+    <div id="dateOneOff">
       <label for="evDate">Date</label>
-      <input type="text" id="evDate" placeholder="e.g. Sat Jul 12 or Every Friday">
+      <input type="date" id="evDate" style="color-scheme:dark;">
+    </div>
+    <div id="dateRecurring" style="display:none;">
+      <label for="evDayOfWeek">Day of Week</label>
+      <select id="evDayOfWeek" style="width:100%;padding:0.7rem 0.9rem;background:var(--card);border:1px solid rgba(139,155,180,0.2);border-radius:4px;color:var(--cream);font-family:var(--font-body);font-size:0.95rem;cursor:pointer;">
+        <option value="Monday">Every Monday</option>
+        <option value="Tuesday">Every Tuesday</option>
+        <option value="Wednesday">Every Wednesday</option>
+        <option value="Thursday">Every Thursday</option>
+        <option value="Friday">Every Friday</option>
+        <option value="Saturday">Every Saturday</option>
+        <option value="Sunday">Every Sunday</option>
+      </select>
     </div>
     <div>
       <label for="evTime">Time</label>
@@ -402,6 +421,10 @@ footer a { color: var(--gold); text-decoration: none; }
     <div class="full">
       <label for="evDesc">Description</label>
       <textarea id="evDesc" placeholder="Tell people what to expect..."></textarea>
+    </div>
+    <div class="full">
+      <label for="evImage">Image URL (optional)</label>
+      <input type="text" id="evImage" placeholder="Link to a photo of your band or event">
     </div>
     <div class="full">
       <label for="evEmail">Your Email (for follow-up)</label>
@@ -707,6 +730,24 @@ async function loadEvents() {
 }
 
 // ---- SUBMIT EVENT ----
+function toggleDateInput() {
+  var type = document.getElementById('evDateType').value;
+  document.getElementById('dateOneOff').style.display = type === 'oneoff' ? '' : 'none';
+  document.getElementById('dateRecurring').style.display = type === 'recurring' ? '' : 'none';
+}
+
+function getFormattedDate() {
+  var type = document.getElementById('evDateType').value;
+  if (type === 'recurring') {
+    return 'Every ' + document.getElementById('evDayOfWeek').value;
+  }
+  var val = document.getElementById('evDate').value;
+  if (!val) return '';
+  var d = new Date(val + 'T12:00:00');
+  if (isNaN(d)) return val;
+  return DAY_NAMES[d.getDay()] + ' ' + MONTH_SHORT[d.getMonth()] + ' ' + d.getDate();
+}
+
 async function submitEvent() {
   var btn = document.getElementById('submitBtn');
   var name = document.getElementById('evName').value.trim();
@@ -731,9 +772,10 @@ async function submitEvent() {
         bandArtist: document.getElementById('evArtist').value.trim(),
         venue: document.getElementById('evVenue').value.trim(),
         address: document.getElementById('evAddress').value.trim(),
-        date: document.getElementById('evDate').value.trim(),
+        date: getFormattedDate(),
         time: document.getElementById('evTime').value.trim(),
         description: document.getElementById('evDesc').value.trim(),
+        imageUrl: document.getElementById('evImage').value.trim(),
         submitterEmail: email
       })
     });
