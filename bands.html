@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Meet the bands and artists of Boston's North Shore music scene. From cover bands to singer-songwriters, find your next favorite act.">
+<title>Bands — North Shore Musicians Guild</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --midnight: #111827;
+  --slate: #1e2533;
+  --card: #252d3d;
+  --gold: #d4a853;
+  --copper: #c45d3e;
+  --copper-hover: #d96e4f;
+  --cream: #e8e0d0;
+  --muted: #8b9bb4;
+  --divider: rgba(212, 168, 83, 0.15);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body); background: var(--midnight);
+  color: var(--cream); line-height: 1.6; -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(17, 24, 39, 0.92);
+  backdrop-filter: blur(12px); border-bottom: 1px solid var(--divider);
+}
+
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 64px;
+}
+
+.nav-brand {
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 600;
+  color: var(--gold); letter-spacing: 0.04em; text-decoration: none;
+  display: flex; align-items: center; gap: 0.7rem;
+}
+
+.nav-brand img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+
+.nav-links a {
+  font-size: 0.85rem; font-weight: 500; color: var(--muted);
+  text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+.nav-links a.active { color: var(--gold); }
+
+.nav-cta {
+  background: var(--copper) !important; color: var(--cream) !important;
+  padding: 0.45rem 1.1rem; border-radius: 4px;
+}
+
+.nav-toggle {
+  display: none; background: none; border: none;
+  color: var(--cream); font-size: 1.5rem; cursor: pointer;
+}
+
+.page-header { padding: 8rem 2rem 3rem; max-width: 1100px; margin: 0 auto; }
+
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+  color: var(--gold); margin-bottom: 0.6rem;
+}
+
+.page-header p { font-size: 1.05rem; color: var(--muted); max-width: 560px; }
+
+/* Bands grid */
+.bands-section { padding: 0 2rem 4rem; }
+
+.bands-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.band-card {
+  background: var(--card); border: 1px solid var(--divider); border-radius: 6px;
+  overflow: hidden; transition: border-color 0.2s, transform 0.15s;
+}
+
+.band-card:hover { border-color: rgba(212, 168, 83, 0.35); transform: translateY(-2px); }
+
+.band-card-img {
+  width: 100%; height: 240px; object-fit: cover; object-position: top;
+  display: block; border-bottom: 1px solid var(--divider);
+}
+
+.band-card-img-placeholder {
+  width: 100%; height: 240px; background: var(--slate);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 0.85rem;
+  border-bottom: 1px solid var(--divider);
+}
+
+.band-card-body { padding: 1.8rem; }
+
+.band-name {
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 600;
+  color: var(--gold); margin-bottom: 0.3rem;
+}
+
+.band-genre {
+  font-size: 0.78rem; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--copper); margin-bottom: 1rem;
+}
+
+.band-bio {
+  font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.2rem;
+}
+
+.band-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+.band-links a {
+  font-size: 0.8rem; font-weight: 500; color: var(--cream);
+  text-decoration: none; border: 1px solid rgba(139, 155, 180, 0.25);
+  padding: 0.4rem 0.8rem; border-radius: 3px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.band-links a:hover { border-color: var(--gold); color: var(--gold); }
+
+.loading-msg {
+  font-size: 0.9rem; color: var(--muted); font-style: italic; padding: 2rem 0;
+}
+
+/* Join CTA */
+.join-cta {
+  max-width: 1100px; margin: 0 auto; padding: 3rem 2rem;
+  border-top: 1px solid var(--divider); text-align: center;
+}
+
+.join-cta h2 {
+  font-family: var(--font-display); font-size: 1.6rem; font-weight: 600;
+  color: var(--gold); margin-bottom: 0.8rem;
+}
+
+.join-cta p {
+  color: var(--muted); margin-bottom: 1.5rem; max-width: 480px;
+  margin-left: auto; margin-right: auto;
+}
+
+.btn-primary {
+  display: inline-block; font-family: var(--font-body);
+  font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 0.85rem 2rem; background: var(--copper); color: var(--cream);
+  border: none; border-radius: 4px; cursor: pointer; text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-primary:hover { background: var(--copper-hover); transform: translateY(-1px); }
+
+footer {
+  border-top: 1px solid var(--divider); padding: 2rem;
+  text-align: center; font-size: 0.78rem; color: var(--muted); opacity: 0.6;
+}
+
+footer a { color: var(--gold); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 64px; left: 0; right: 0;
+    background: rgba(17, 24, 39, 0.98);
+    padding: 1.5rem 2rem; border-bottom: 1px solid var(--divider); gap: 1rem;
+  }
+  .bands-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><img src="https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/6853cd7a-9756-4c65-aac0-d9947dd8b084/NSMG+Logo.png" alt="NSMG">North Shore Musicians Guild</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="events.html">Events</a></li>
+      <li><a href="bands.html" class="active">Bands</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#join" class="nav-cta">Join the Guild</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>The Bands</h1>
+  <p>The artists and acts that make the North Shore music scene what it is. Want your band listed? Join the Guild.</p>
+</div>
+
+<div class="bands-section">
+  <div class="bands-grid" id="bandsGrid">
+    <p class="loading-msg">Loading bands...</p>
+  </div>
+</div>
+
+<div class="join-cta">
+  <h2>Want Your Band Listed?</h2>
+  <p>Join the Guild and we'll get your band on the site with a profile, photo, and links to your pages.</p>
+  <a href="index.html#join" class="btn-primary">Join the Guild</a>
+</div>
+
+<footer>
+  &copy; 2026 <a href="index.html">North Shore Musicians Guild</a>. Built for the scene.
+</footer>
+
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyUfeIwbjBsvjoYD6F_eT_U7KKlvTHBpSxBy7glnHDZm7JRHn6-Jy8EJYWVYiqhaDi6/exec';
+
+const FALLBACK_BANDS = [
+  { bandName: 'Bare Bones', genre: 'High Energy Rock / Covers', bio: 'A 4-piece band with 4 lead vocalists, based on the North Shore. Bare Bones performs on a regular basis and plays a wide variety of highly recognizable covers and fan favorites. Available for any type of venue and private event.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/62dfc18d-198e-4498-bd6e-3b6b8d2c7901/OIP.webp?format=750w', facebookUrl: 'https://www.facebook.com/BareBonesBoston/' },
+  { bandName: 'Ordinary Madness', genre: 'Progressive Rock / Classic Covers', bio: 'A North Shore band playing covers spanning five decades -- from the iconic anthems to the hidden gems seldom heard by other cover bands. With over two decades of musical camaraderie, the members of Ordinary Madness share a bond as enduring as the songs they play.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/8733ba9b-b33c-4da5-a5f0-d3bb8e14121b/deck+pic.jpeg?format=750w', websiteUrl: 'https://ordinary-madness.com/', facebookUrl: 'https://www.facebook.com/OrdinaryMadnessMusic/' },
+  { bandName: 'Fred Ellsworth', genre: 'Country / Rock', bio: 'A country artist from Westminster who will draw you in with his guitar and keep you with his soaring vocals. Equally at home with Haggard and Cash as with Petty and Skynyrd, Fred has spent years opening for the likes of Marshal Tucker, Leann Rimes, Tim McGraw, Faith Hill, Willie Nelson, and Brad Paisley.', imageUrl: 'https://images.squarespace-cdn.com/content/v1/69e4f1aaecad617269ed70e4/503b0b66-a219-48ab-9fc5-4fea96a4e99f/fred.webp?format=750w', websiteUrl: 'https://fredellsworth.com/', facebookUrl: 'https://www.facebook.com/FredEllsworthMusic/' }
+];
+
+async function loadBands() {
+  var grid = document.getElementById('bandsGrid');
+  var bands = FALLBACK_BANDS;
+  try {
+    if (SCRIPT_URL && !SCRIPT_URL.includes('YOUR_APPS_SCRIPT')) {
+      var res = await fetch(SCRIPT_URL + '?action=getBands');
+      var data = await res.json();
+      if (data.success && data.bands.length) {
+        bands = data.bands;
+      }
+    }
+  } catch (err) {
+    console.log('Using fallback bands');
+  }
+
+  grid.innerHTML = bands.map(function(b) {
+    var links = '';
+    if (b.websiteUrl) links += '<a href="' + b.websiteUrl + '" target="_blank">Website</a>';
+    if (b.facebookUrl) links += '<a href="' + b.facebookUrl + '" target="_blank">Facebook</a>';
+
+    var imgBlock = b.imageUrl
+      ? '<img class="band-card-img" src="' + b.imageUrl + '" alt="' + (b.bandName || '') + '">'
+      : '<div class="band-card-img-placeholder">No Photo</div>';
+
+    return '<div class="band-card">' +
+      imgBlock +
+      '<div class="band-card-body">' +
+      '<div class="band-name">' + (b.bandName || '') + '</div>' +
+      '<div class="band-genre">' + (b.genre || '') + '</div>' +
+      '<p class="band-bio">' + (b.bio || '') + '</p>' +
+      (links ? '<div class="band-links">' + links + '</div>' : '') +
+      '</div></div>';
+  }).join('');
+}
+
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+  link.addEventListener('click', function() { document.querySelector('.nav-links').classList.remove('open'); });
+});
+
+loadBands();
+</script>
+
+</body>
+</html>

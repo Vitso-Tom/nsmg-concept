@@ -101,19 +101,24 @@ function doPost(e) {
   // ---- Submit an Event ----
   if (action === 'submitEvent') {
     var sheet = ss.getSheetByName('Events');
+    var dateVal = data.date ? data.date.toString() : '';
+    var timeVal = data.time ? data.time.toString() : '';
     sheet.appendRow([
       'pending',
       data.eventName || '',
       data.bandArtist || '',
       data.venue || '',
       data.address || '',
-      data.date || '',
-      data.time || '',
+      dateVal,
+      timeVal,
       data.description || '',
       data.imageUrl || '',
       timestamp,
       data.submitterEmail || ''
     ]);
+    // Force date and time columns to plain text on the new row
+    var lastRow = sheet.getLastRow();
+    sheet.getRange(lastRow, 6, 1, 2).setNumberFormat('@');
 
     // Notify John
     MailApp.sendEmail('thomas.smolinsky@gmail.com, tom@vitsotech.com',

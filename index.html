@@ -394,7 +394,7 @@ footer {
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
     <ul class="nav-links">
       <li><a href="events.html">Events</a></li>
-      <li><a href="#members">Bands</a></li>
+      <li><a href="bands.html">Bands</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#join" class="nav-cta">Join the Guild</a></li>
     </ul>
@@ -436,6 +436,9 @@ footer {
     <p class="section-desc">The artists that make the North Shore scene what it is. Want your band featured? Join the Guild.</p>
     <div class="members-grid" id="membersGrid">
       <p class="loading-msg">Loading bands...</p>
+    </div>
+    <div style="margin-top: 2rem;">
+      <a href="bands.html" class="btn-primary">See All Bands</a>
     </div>
   </div>
 </section>
@@ -539,7 +542,7 @@ footer {
     <div class="footer-col">
       <h4>Navigate</h4>
       <a href="events.html">Events</a>
-      <a href="#members">Bands</a>
+      <a href="bands.html">Bands</a>
       <a href="#about">About</a>
       <a href="#join">Join</a>
     </div>
@@ -694,7 +697,9 @@ async function loadBands() {
   } catch (err) {
     console.log('Using fallback bands (API not configured or Bands tab missing)');
   }
-  grid.innerHTML = bands.map(b => {
+  grid.innerHTML = bands.filter(function(b) {
+    return b.featured && b.featured.toString().toLowerCase() === 'yes';
+  }).map(b => {
     var links = '';
     if (b.websiteUrl) links += `<a href="${b.websiteUrl}" target="_blank">Website</a>`;
     if (b.facebookUrl) links += `<a href="${b.facebookUrl}" target="_blank">Facebook</a>`;
