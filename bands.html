@@ -213,10 +213,46 @@ footer a { color: var(--gold); text-decoration: none; }
   </div>
 </div>
 
-<div class="join-cta">
-  <h2>Want Your Band Listed?</h2>
-  <p>Join the Guild and we'll get your band on the site with a profile, photo, and links to your pages.</p>
-  <a href="index.html#join" class="btn-primary">Join the Guild</a>
+<div class="join-cta" id="register">
+  <h2>Register Your Band</h2>
+  <p>Join the Guild and get your band listed with a profile, photo, and links. Free to register, live after a quick review.</p>
+
+  <div class="register-form" id="registerForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; max-width: 700px; margin: 2rem auto 0; text-align: left;">
+    <div>
+      <label style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); display: block; margin-bottom: 0.4rem;">Band / Artist Name</label>
+      <input type="text" id="regName" placeholder="e.g. The Harbor Dogs" style="width:100%;padding:0.7rem 0.9rem;background:var(--card);border:1px solid rgba(139,155,180,0.2);border-radius:4px;color:var(--cream);font-family:var(--font-body);font-size:0.95rem;outline:none;">
+    </div>
+    <div>
+      <label style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); display: block; margin-bottom: 0.4rem;">Genre</label>
+      <input type="text" id="regGenre" placeholder="e.g. Blues Rock, Covers" style="width:100%;padding:0.7rem 0.9rem;background:var(--card);border:1px solid rgba(139,155,180,0.2);border-radius:4px;color:var(--cream);font-family:var(--font-body);font-size:0.95rem;outline:none;">
+    </div>
+    <div style="grid-column: 1 / -1;">
+      <label style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); display: block; margin-bottom: 0.4rem;">Bio / Description</label>
+      <textarea id="regBio" placeholder="Tell people about your band..." style="width:100%;min-height:100px;padding:0.7rem 0.9rem;background:var(--card);border:1px solid rgba(139,155,180,0.2);border-radius:4px;color:var(--cream);font-family:var(--font-body);font-size:0.95rem;outline:none;resize:vertical;"></textarea>
+    </div>
+    <div>
+      <label style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); display: block; margin-bottom: 0.4rem;">Image URL (optional)</label>
+      <input type="text" id="regImage" placeholder="Link to a band photo" style="width:100%;padding:0.7rem 0.9rem;background:var(--card);border:1px solid rgba(139,155,180,0.2);border-radius:4px;color:var(--cream);font-family:var(--font-body);font-size:0.95rem;outline:none;">
+    </div>
+    <div>
+      <label style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); display: block; margin-bottom: 0.4rem;">Website (optional)</label>
+      <input type="text" id="regWebsite" placeholder="https://yourband.com" style="width:100%;padding:0.7rem 0.9rem;background:var(--card);border:1px solid rgba(139,155,180,0.2);border-radius:4px;color:var(--cream);font-family:var(--font-body);font-size:0.95rem;outline:none;">
+    </div>
+    <div>
+      <label style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); display: block; margin-bottom: 0.4rem;">Facebook Page (optional)</label>
+      <input type="text" id="regFacebook" placeholder="https://facebook.com/yourband" style="width:100%;padding:0.7rem 0.9rem;background:var(--card);border:1px solid rgba(139,155,180,0.2);border-radius:4px;color:var(--cream);font-family:var(--font-body);font-size:0.95rem;outline:none;">
+    </div>
+    <div>
+      <label style="font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); display: block; margin-bottom: 0.4rem;">Contact Email</label>
+      <input type="email" id="regEmail" placeholder="you@example.com" style="width:100%;padding:0.7rem 0.9rem;background:var(--card);border:1px solid rgba(139,155,180,0.2);border-radius:4px;color:var(--cream);font-family:var(--font-body);font-size:0.95rem;outline:none;">
+    </div>
+    <div style="grid-column: 1 / -1;">
+      <button class="btn-primary" id="registerBtn" onclick="registerBand()">Register Your Band</button>
+    </div>
+  </div>
+  <div id="registerSuccess" style="display:none;background:rgba(212,168,83,0.1);border:1px solid var(--gold);border-radius:4px;padding:1rem 1.2rem;font-size:0.9rem;color:var(--gold);max-width:700px;margin:2rem auto 0;">
+    Band submitted! Your profile will appear on the site after a quick review. Welcome to the Guild.
+  </div>
 </div>
 
 <footer>
@@ -272,6 +308,44 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
 });
 
 loadBands();
+
+async function registerBand() {
+  var btn = document.getElementById('registerBtn');
+  var name = document.getElementById('regName').value.trim();
+  var email = document.getElementById('regEmail').value.trim();
+
+  if (!name || !email) {
+    alert('Please provide at least your band name and contact email.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'registerBand',
+        bandName: name,
+        genre: document.getElementById('regGenre').value.trim(),
+        bio: document.getElementById('regBio').value.trim(),
+        imageUrl: document.getElementById('regImage').value.trim(),
+        websiteUrl: document.getElementById('regWebsite').value.trim(),
+        facebookUrl: document.getElementById('regFacebook').value.trim(),
+        contactEmail: email
+      })
+    });
+    document.getElementById('registerForm').style.display = 'none';
+    document.getElementById('registerSuccess').style.display = 'block';
+  } catch (err) {
+    alert('Something went wrong. Please try again.');
+    btn.disabled = false;
+    btn.textContent = 'Register Your Band';
+  }
+}
 </script>
 
 </body>

@@ -98,6 +98,37 @@ function doPost(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 
+  // ---- Register a Band ----
+  if (action === 'registerBand') {
+    var sheet = ss.getSheetByName('Bands');
+    sheet.appendRow([
+      'pending',
+      data.bandName || '',
+      data.genre || '',
+      data.bio || '',
+      data.imageUrl || '',
+      data.websiteUrl || '',
+      data.facebookUrl || '',
+      '',
+      timestamp,
+      data.contactEmail || ''
+    ]);
+
+    // Notify
+    MailApp.sendEmail('thomas.smolinsky@gmail.com, tom@vitsotech.com',
+      'New Band Registration: ' + (data.bandName || ''),
+      'Genre: ' + (data.genre || '') +
+      '\nBio: ' + (data.bio || '') +
+      '\nWebsite: ' + (data.websiteUrl || '') +
+      '\nFacebook: ' + (data.facebookUrl || '') +
+      '\nContact: ' + (data.contactEmail || '') +
+      '\n\nReview and approve in your NSMG sheet.');
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ success: true, message: 'Band registered!' }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
   // ---- Submit an Event ----
   if (action === 'submitEvent') {
     var sheet = ss.getSheetByName('Events');
