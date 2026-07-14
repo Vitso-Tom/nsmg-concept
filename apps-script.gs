@@ -85,7 +85,7 @@ function doPost(e) {
     ]);
 
     // Notify John
-    MailApp.sendEmail('thomas.smolinsky@gmail.com, tom@vitsotech.com',
+    MailApp.sendEmail('thomas.smolinsky@gmail.com, tom@vitsotech.com, nsmusiciansguild@gmail.com',
       'New Guild Member: ' + (data.firstName || '') + ' ' + (data.lastName || ''),
       'Email: ' + (data.email || '') +
       '\nType: ' + (data.type || '') +
@@ -115,7 +115,7 @@ function doPost(e) {
     ]);
 
     // Notify
-    MailApp.sendEmail('thomas.smolinsky@gmail.com, tom@vitsotech.com',
+    MailApp.sendEmail('thomas.smolinsky@gmail.com, tom@vitsotech.com, nsmusiciansguild@gmail.com',
       'New Band Registration: ' + (data.bandName || ''),
       'Genre: ' + (data.genre || '') +
       '\nBio: ' + (data.bio || '') +
@@ -152,7 +152,7 @@ function doPost(e) {
     sheet.getRange(lastRow, 6, 1, 2).setNumberFormat('@');
 
     // Notify John
-    MailApp.sendEmail('thomas.smolinsky@gmail.com, tom@vitsotech.com',
+    MailApp.sendEmail('thomas.smolinsky@gmail.com, tom@vitsotech.com, nsmusiciansguild@gmail.com',
       'New Event Submission: ' + (data.eventName || ''),
       'Band/Artist: ' + (data.bandArtist || '') +
       '\nVenue: ' + (data.venue || '') +
